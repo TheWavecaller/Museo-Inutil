@@ -4,6 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { ArrowRightIcon, MinusIcon, PlusIcon } from "lucide-react"
 
+import { Pegatina } from "@/components/garabatos"
 import { Button } from "@/components/ui/button"
 import {
   coleccion,
@@ -138,6 +139,11 @@ function Ficha({ pieza, destacada }: { pieza: Pieza; destacada: boolean }) {
           className="object-cover transition-transform duration-500 hover:scale-[1.03]"
           style={{ objectPosition: pieza.encuadre }}
         />
+        {destacada && (
+          <Pegatina className="absolute top-5 left-5 text-2xl">
+            ¡Pieza estrella!
+          </Pegatina>
+        )}
       </div>
       <div className="flex flex-col gap-2 border-t p-5 sm:p-6">
         <div className="flex items-baseline justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">

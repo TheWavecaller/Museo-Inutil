@@ -1,5 +1,6 @@
 import { ArrowDownIcon, ArrowRightIcon } from "lucide-react"
 
+import { Nota } from "@/components/garabatos"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { buttonVariants } from "@/components/ui/button"
 import { enLetras, expo } from "@/lib/expo"
@@ -62,6 +63,10 @@ export function Hero() {
             </a>
           </div>
 
+          <Nota className="mt-4 mb-2 ml-6 -rotate-3">
+            lo único que funciona aquí
+          </Nota>
+
           <p className="mt-4 text-sm text-muted-foreground">
             En taquilla costará {expo.tickets.general} €. Lo cual tampoco
             tendría ningún sentido.
@@ -88,7 +93,7 @@ export function Hero() {
               <dt className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
                 {fact.label}
               </dt>
-              <dd className="mt-2 font-heading text-xl sm:text-2xl">
+              <dd className="mt-2 font-heading text-lg leading-snug sm:text-xl">
                 {fact.value}
               </dd>
             </div>

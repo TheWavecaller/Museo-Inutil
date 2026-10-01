@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ArrowRightIcon } from "lucide-react"
 
+import { Pegatina } from "@/components/garabatos"
 import { buttonVariants } from "@/components/ui/button"
 import { coleccion, numeroPieza } from "@/lib/coleccion"
 import { enLetras, expo } from "@/lib/expo"
@@ -18,9 +19,10 @@ export function CtaFinal() {
         <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
           Últimas semanas desde el primer día
         </p>
+        <Pegatina className="mt-6 rotate-3 text-2xl">¡Corre! (o no)</Pegatina>
         <h2
           id="cta-title"
-          className="mx-auto mt-8 max-w-5xl font-heading text-5xl leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl"
+          className="mx-auto mt-6 max-w-5xl font-heading text-5xl leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl"
         >
           Cuatro semanas. {enLetras(expo.objectCount, { mayuscula: true })}{" "}
           objetos. <em className="text-primary">Cero utilidad.</em>

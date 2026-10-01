@@ -1,22 +1,29 @@
 import type { Metadata } from "next"
-import { Geist_Mono, Instrument_Serif, Inter } from "next/font/google"
+import { Bricolage_Grotesque, Caveat, Space_Mono } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-
-const instrumentSerif = Instrument_Serif({
+// Una grotesca con carácter para todo el texto (el eje opsz la adapta
+// sola a titulares y a texto pequeño)
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-serif",
+  axes: ["opsz", "wdth"],
+  variable: "--font-sans",
 })
 
-const fontMono = Geist_Mono({
+// Letra manuscrita para las anotaciones del comisario
+const caveat = Caveat({
   subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-hand",
+})
+
+const fontMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
   variable: "--font-mono",
 })
 
@@ -36,8 +43,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(
         "scroll-smooth antialiased",
-        inter.variable,
-        instrumentSerif.variable,
+        bricolage.variable,
+        caveat.variable,
         fontMono.variable,
         "font-sans"
       )}

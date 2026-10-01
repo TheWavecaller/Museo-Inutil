@@ -10,6 +10,7 @@ import {
   PlayIcon,
 } from "lucide-react"
 
+import { Pegatina } from "@/components/garabatos"
 import { Button } from "@/components/ui/button"
 import {
   Carousel,
@@ -67,12 +68,15 @@ export function HeroCarousel() {
 
   return (
     <figure className="relative mx-auto w-full max-w-md">
+      <Pegatina className="absolute -top-4 -right-3 z-20 rotate-6 text-2xl sm:-right-6">
+        ¡No funciona!
+      </Pegatina>
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
         plugins={[autoplay]}
         aria-label="Piezas de la colección"
-        className="border bg-white"
+        className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-white"
       >
         <CarouselContent className="ml-0">
           {coleccion.map((p, i) => (
@@ -106,7 +110,7 @@ export function HeroCarousel() {
         </CarouselContent>
       </Carousel>
 
-      <figcaption className="relative z-10 mt-4 border bg-card shadow-[4px_4px_0_0_var(--foreground)] sm:-mt-8 sm:mr-8 sm:-ml-8">
+      <figcaption className="relative z-10 mt-4 overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-card shadow-[4px_4px_0_0_var(--foreground)] sm:-mt-8 sm:mr-8 sm:-ml-8">
         <div className="flex items-end justify-between gap-4 px-5 pt-4 pb-3">
           <div className="min-w-0">
             <p className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">

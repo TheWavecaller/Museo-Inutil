@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Nota } from "@/components/garabatos"
 import { expo } from "@/lib/expo"
 
 const principios = [
@@ -55,6 +56,9 @@ export function Manifiesto() {
           </div>
 
           <figure className="lg:col-span-5">
+            <Nota flecha="abajo" className="mb-1 ml-6 rotate-2">
+              aquí es (el de cristal)
+            </Nota>
             <div className="relative aspect-[6/7] overflow-hidden border">
               <Image
                 src="/multimedia/cosmocaixa.webp"
@@ -81,7 +85,7 @@ export function Manifiesto() {
             >
               <span
                 aria-hidden="true"
-                className="font-heading text-6xl leading-none text-primary"
+                className="font-hand text-7xl leading-none font-bold text-primary"
               >
                 {p.numero}
               </span>

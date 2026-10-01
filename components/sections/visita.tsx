@@ -101,7 +101,7 @@ export function Visita() {
         </dl>
 
         <figure className="lg:col-span-7">
-          <div className="relative aspect-[4/3] overflow-hidden border bg-muted shadow-[6px_6px_0_0_var(--foreground)] lg:aspect-auto lg:h-full lg:min-h-[28rem]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-muted shadow-[6px_6px_0_0_var(--foreground)] lg:aspect-auto lg:h-full lg:min-h-[28rem]">
             <iframe
               src={mapaEmbed}
               title={`Mapa de la ubicación de ${expo.venue} en ${expo.city}`}

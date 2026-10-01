@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (colección ampliada a 33 piezas)
+Última actualización: 2026-10-01 (prueba de estilo informal en la rama `estilo-informal`)
 
 ---
 
@@ -35,6 +35,16 @@ Proyecto de clase **"My First Professional Landing Page"**: trabajamos como un p
   - Acento **acuamarino**: `oklch(0.52 0.095 195)` en claro y `oklch(0.8 0.11 185)` en oscuro. Antes era rojo; se cambió a petición del cliente.
   - Esquinas casi rectas (`--radius: 0.125rem`).
 - **Tono:** irónico pero elegante, con frases cortas. Ejemplo: *"En taquilla costará 12 €. Lo cual tampoco tendría ningún sentido."*
+
+### Versiones de estilo (git)
+- **`main` / etiqueta `v1-catalogo`:** estética de catálogo de museo con Instrument Serif, Inter, Geist Mono y palabras destacadas en cursiva acuamarina.
+- **Rama `estilo-informal`** (en prueba, 2026-10-01). El cliente pidió algo más informal, gracioso y menos "página IA genérica":
+  - **Fuentes:** Bricolage Grotesque para todo (titulares en peso 800, con interletraje apretado), Caveat para las anotaciones manuscritas y Space Mono como monoespaciada.
+  - **Palabras destacadas:** con un **trazo de rotulador fosforito** (`--marker`) en vez de cursiva. Es CSS sin capa en `globals.css`; en la sección Entradas el trazo es oscuro.
+  - **Elementos humorísticos** (`components/garabatos.tsx`): `<Pegatina>` amarilla torcida (`--pop`, el amarillo de las botas): "¡No funciona!", "¡Pieza estrella!", "¡Recomendada!", "¡Corre! (o no)". `<Nota>` manuscrita con flecha: "lo único que funciona aquí" bajo el botón del hero y "aquí es (el de cristal)" sobre la foto de la sede.
+  - **Botones:** píldora con borde negro y sombra dura, que se hunde al pulsar (`components/ui/button.tsx`).
+  - **Cajas con sombra** (cartela del hero, taquilla y mapa): esquinas redondeadas y borde de 2 px.
+  - **Números romanos del Manifiesto:** en letra manuscrita.
 
 ### Datos de la exposición (inventados y verosímiles)
 Están centralizados en `lib/expo.ts`. Si se cambian ahí, cambian en toda la web.

@@ -1,5 +1,6 @@
 import { CheckIcon } from "lucide-react"
 
+import { Pegatina } from "@/components/garabatos"
 import { Taquilla } from "@/components/taquilla"
 import { expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
@@ -40,7 +41,7 @@ export function Entradas() {
     <section
       id="entradas"
       aria-labelledby="entradas-title"
-      className="bg-primary text-primary-foreground"
+      className="bg-primary text-primary-foreground [--marker:oklch(0.2_0.012_60/0.35)]"
     >
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-12">
@@ -72,7 +73,7 @@ export function Entradas() {
           </ul>
 
           <div className="lg:col-span-5">
-            <div className="bg-card text-card-foreground shadow-[8px_8px_0_0_var(--foreground)] lg:sticky lg:top-32">
+            <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-card text-card-foreground shadow-[8px_8px_0_0_var(--foreground)] lg:sticky lg:top-32">
               <div className="flex items-center justify-between bg-foreground px-6 py-3 text-background sm:px-8">
                 <p className="font-mono text-[0.6875rem] tracking-[0.15em] uppercase">
                   Taquilla online
@@ -112,9 +113,7 @@ function Ticket({
         <div className="flex flex-wrap items-center gap-3">
           <h3 className="font-heading text-3xl leading-none">{nombre}</h3>
           {destacada && (
-            <span className="bg-primary px-2 py-0.5 font-mono text-[0.625rem] tracking-[0.15em] text-primary-foreground uppercase">
-              Recomendada
-            </span>
+            <Pegatina className="-rotate-3 text-lg">¡Recomendada!</Pegatina>
           )}
         </div>
         <p
