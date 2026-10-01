@@ -70,7 +70,7 @@ export function CtaFinal() {
                   style={{ objectPosition: p.encuadre }}
                 />
               </div>
-              <p className="flex justify-between gap-3 px-3 py-2 font-mono text-[0.625rem] tracking-[0.15em] text-muted-foreground uppercase">
+              <p className="flex justify-between gap-3 px-3 py-2 font-label text-[0.6875rem] text-muted-foreground uppercase">
                 <span className="shrink-0">Nº {numeroPieza(p.slug)}</span>
                 <span className="min-w-0 truncate">{p.nombre}</span>
               </p>

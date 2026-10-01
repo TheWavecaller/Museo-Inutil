@@ -75,7 +75,7 @@ export function Recorrido() {
                   i === paradas.length - 1 && "bg-primary"
                 )}
               />
-              <div className="flex items-baseline gap-3 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+              <div className="flex items-baseline gap-3 font-label text-xs text-muted-foreground uppercase">
                 <span className="text-primary">{parada.minuto}</span>
                 <span>{parada.lugar}</span>
               </div>
@@ -85,7 +85,7 @@ export function Recorrido() {
               <p className="mt-3 text-sm leading-relaxed text-pretty text-muted-foreground">
                 {parada.texto}
               </p>
-              <p className="mt-5 inline-block rounded-full border-2 border-foreground bg-card px-3 py-1 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
+              <p className="mt-5 inline-block rounded-full border-2 border-foreground bg-card px-3 py-1 font-label text-[0.6875rem] uppercase">
                 {parada.etiqueta}
               </p>
             </li>

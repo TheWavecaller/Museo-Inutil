@@ -116,7 +116,7 @@ export function Visita() {
               className="absolute inset-0 size-full border-0"
             />
           </div>
-          <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+          <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-4 font-label text-xs text-muted-foreground uppercase">
             <span>Fig. 2 · Cómo llegar</span>
             <EnlaceAnimado
               href={mapaEnlace}
@@ -150,7 +150,7 @@ function Dato({
   const clases = "grid grid-cols-[auto_1fr] gap-x-4 border-b py-6"
   const contenido = (
     <div>
-      <dt className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+      <dt className="font-label text-xs text-muted-foreground uppercase">
         {titulo}
       </dt>
       <dd className="mt-2 flex flex-col gap-0.5">{children}</dd>

@@ -91,7 +91,7 @@ export function Hero() {
                 i === 3 && "border-t lg:border-t-0"
               )}
             >
-              <dt className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+              <dt className="font-label text-xs text-muted-foreground uppercase">
                 {fact.label}
               </dt>
               <dd className="mt-2 font-heading text-lg leading-snug sm:text-xl">

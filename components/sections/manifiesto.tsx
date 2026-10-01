@@ -66,7 +66,7 @@ export function Manifiesto() {
                 className="object-cover"
               />
             </div>
-            <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t pt-3 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t pt-3 font-label text-xs text-muted-foreground uppercase">
               <span className="shrink-0">Fig. 1 · La sede</span>
               <span className="text-right">
                 {expo.venue}, Museo de la Ciencia · {expo.city}
@@ -87,9 +87,7 @@ export function Manifiesto() {
               >
                 {p.numero}
               </span>
-              <h3 className="mt-8 font-mono text-xs tracking-[0.2em] uppercase">
-                {p.titulo}
-              </h3>
+              <h3 className="mt-8 font-label text-xs uppercase">{p.titulo}</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
                 {p.texto}
               </p>

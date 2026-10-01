@@ -87,7 +87,7 @@ export function ColeccionGrid() {
           )}
         </Button>
         {!abierta && (
-          <p className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+          <p className="font-label text-xs text-muted-foreground uppercase">
             {ocultas} objetos inútiles más en el almacén
           </p>
         )}
@@ -109,7 +109,7 @@ function TarjetaEntrada({ horizontal }: { horizontal: boolean }) {
           "lg:min-h-0 lg:flex-row lg:items-end lg:p-8 [&>div]:lg:max-w-xl"
       )}
     >
-      <p className="font-mono text-[0.6875rem] tracking-[0.15em] uppercase opacity-80">
+      <p className="font-label text-xs uppercase opacity-80">
         Pieza Nº {String(coleccion.length + 1).padStart(3, "0")} · Papel
       </p>
       <div>
@@ -155,7 +155,7 @@ function Ficha({ pieza, destacada }: { pieza: Pieza; destacada: boolean }) {
         )}
       </div>
       <div className="flex flex-col gap-2 border-t p-5 sm:p-6">
-        <div className="flex items-baseline justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+        <div className="flex items-baseline justify-between gap-4 font-label text-xs text-muted-foreground uppercase">
           <span>Nº {numeroPieza(pieza.slug)}</span>
           <span>{pieza.tipo}</span>
         </div>
@@ -172,7 +172,7 @@ function Ficha({ pieza, destacada }: { pieza: Pieza; destacada: boolean }) {
         </p>
         <p className="mt-auto flex items-baseline justify-between border-t border-dashed pt-3 text-sm">
           <span className="text-muted-foreground">Utilidad</span>
-          <span className="font-mono text-primary">
+          <span className="font-label text-primary">
             {formatoUtilidad(pieza.utilidad)}
           </span>
         </p>

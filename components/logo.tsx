@@ -50,7 +50,7 @@ export function Logo({ className }: { className?: string }) {
     >
       <LogoMark />
       <span className="flex flex-col">
-        <span className="font-mono text-[0.625rem] leading-none tracking-[0.2em] text-muted-foreground uppercase">
+        <span className="font-label text-[0.6875rem] leading-none text-muted-foreground uppercase">
           Museo de
         </span>
         <span
@@ -59,7 +59,7 @@ export function Logo({ className }: { className?: string }) {
         >
           Objetos Inú
           {/* La "t" se ha caído: ni el logo funciona del todo */}
-          <span className="-ml-[0.1em] mr-[0.1em] inline-block origin-bottom-left rotate-[22deg] text-primary transition-transform duration-300 group-hover/logo:rotate-0">
+          <span className="mr-[0.1em] -ml-[0.1em] inline-block origin-bottom-left rotate-[22deg] text-primary transition-transform duration-300 group-hover/logo:rotate-0">
             t
           </span>
           iles

@@ -160,7 +160,7 @@ export function Programa() {
             <header className="border-b border-current/15 p-6">
               <p
                 className={cn(
-                  "flex justify-between font-mono text-[0.6875rem] tracking-[0.15em] uppercase",
+                  "flex justify-between font-label text-xs uppercase",
                   semana.final ? "opacity-80" : "text-muted-foreground"
                 )}
               >
@@ -184,7 +184,7 @@ export function Programa() {
                     </p>
                     <p
                       className={cn(
-                        "mt-1 font-mono text-[0.625rem] tracking-[0.15em] uppercase",
+                        "mt-1 font-label text-[0.6875rem] uppercase",
                         semana.final ? "opacity-80" : "text-muted-foreground"
                       )}
                     >
@@ -194,7 +194,7 @@ export function Programa() {
                   <div className="min-w-0">
                     <p
                       className={cn(
-                        "font-mono text-[0.6875rem] tracking-[0.1em]",
+                        "font-label text-xs",
                         semana.final ? "opacity-80" : "text-primary"
                       )}
                     >
@@ -211,7 +211,7 @@ export function Programa() {
                     >
                       {a.texto}
                     </p>
-                    <p className="mt-3 inline-block rounded-full border border-current/40 px-2.5 py-0.5 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
+                    <p className="mt-3 inline-block rounded-full border border-current/40 px-2.5 py-0.5 font-label text-[0.6875rem] uppercase">
                       {a.etiqueta}
                     </p>
                   </div>

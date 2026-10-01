@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (estilo informal definitivo, iconos animados y header nuevo)
+Última actualización: 2026-10-01 (fuera la monoespaciada: etiquetas en Bricolage estrecha)
 
 ---
 
@@ -38,7 +38,9 @@ Proyecto de clase **"My First Professional Landing Page"**: trabajamos como un p
 
 ### Estilo definitivo: informal (desde 2026-10-01)
 La versión informal está fusionada en `main`. La de catálogo solo queda en la etiqueta `v1-catalogo` como referencia.
-- **Fuentes:** Bricolage Grotesque para todo (titulares en peso 800, con interletraje apretado), Caveat (`font-hand`) para las anotaciones y Space Mono como monoespaciada.
+- **Fuentes:** **solo Bricolage Grotesque** (titulares en peso 800, con interletraje apretado) y Caveat (`font-hand`) para las anotaciones. **No hay monoespaciada:** Space Mono se quitó porque desentonaba.
+  - Etiquetas, fichas y cifras usan la utilidad **`font-label`** (`globals.css`): Bricolage estrecha (`font-stretch: 85%`, eje `wdth`), seminegrita y con cifras de ancho fijo. Tamaños habituales: `text-xs` y `text-[0.6875rem]`, en mayúsculas.
+  - No usar `font-mono` en componentes nuevos.
 - **Palabras destacadas:** con trazo de rotulador fosforito (`--marker`), en CSS sin capa en `globals.css`. En Entradas el trazo es oscuro.
 - **Humor** (`components/garabatos.tsx`): `<Pegatina>` amarilla torcida (`--pop`) y `<Nota>` manuscrita con flecha. Usarlas con mesura, como mucho una por sección.
 - **Lenguaje de formas:** bordes de 2 px en `foreground`, esquinas `rounded-[var(--radius)]`, sombras duras desplazadas y píldoras (`rounded-full`) para botones, etiquetas y menú.

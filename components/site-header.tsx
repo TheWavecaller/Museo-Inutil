@@ -133,7 +133,7 @@ export function SiteHeader() {
                           }
                           className="flex items-baseline gap-4 border-b py-4 font-heading text-3xl transition-transform hover:translate-x-1 aria-[current]:text-primary"
                         >
-                          <span className="font-mono text-xs text-muted-foreground">
+                          <span className="font-label text-xs text-muted-foreground">
                             {String(i + 1).padStart(2, "0")}
                           </span>
                           {item.label}

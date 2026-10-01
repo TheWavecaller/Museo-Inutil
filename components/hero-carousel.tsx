@@ -112,7 +112,7 @@ export function HeroCarousel() {
       <figcaption className="relative z-10 mt-4 overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-card shadow-[4px_4px_0_0_var(--foreground)] sm:-mt-8 sm:mr-8 sm:-ml-8">
         <div className="flex items-end justify-between gap-4 px-5 pt-4 pb-3">
           <div className="min-w-0">
-            <p className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <p className="font-label text-xs text-muted-foreground uppercase">
               Pieza Nº {numeroPieza(pieza.slug)} · {pieza.tipo}
             </p>
             <p className="mt-1 truncate font-heading text-2xl leading-tight">
@@ -123,10 +123,10 @@ export function HeroCarousel() {
             </p>
           </div>
           <div className="shrink-0 text-right">
-            <p className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <p className="font-label text-xs text-muted-foreground uppercase">
               Utilidad
             </p>
-            <p className="mt-1 font-mono text-lg text-primary">
+            <p className="mt-1 font-label text-lg text-primary">
               {formatoUtilidad(pieza.utilidad)}
             </p>
           </div>
@@ -139,7 +139,7 @@ export function HeroCarousel() {
               onClick={() => api?.scrollPrev()}
               aria-label="Pieza anterior"
             />
-            <span className="px-1 font-mono text-xs text-muted-foreground tabular-nums">
+            <span className="px-1 font-label text-xs text-muted-foreground tabular-nums">
               {String(actual + 1).padStart(2, "0")} /{" "}
               {String(coleccion.length).padStart(2, "0")}
             </span>

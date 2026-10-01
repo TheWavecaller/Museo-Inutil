@@ -77,7 +77,7 @@ export function Taquilla() {
       <div className="border-b p-6 sm:p-8">
         <label
           htmlFor="dia-visita"
-          className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase"
+          className="font-label text-xs text-muted-foreground uppercase"
         >
           Día de la visita
         </label>
@@ -102,7 +102,7 @@ export function Taquilla() {
             <li key={t.id} className="flex items-center justify-between gap-4">
               <div>
                 <p className="font-medium">{t.nombre}</p>
-                <p className="font-mono text-sm text-muted-foreground">
+                <p className="font-label text-sm text-muted-foreground">
                   {t.precio === 0 ? "Gratis" : `${t.precio} €`}
                 </p>
               </div>
@@ -120,7 +120,7 @@ export function Taquilla() {
                 <output
                   aria-live="polite"
                   aria-label={`Entradas ${t.nombre}`}
-                  className="w-8 text-center font-mono tabular-nums"
+                  className="w-8 text-center font-label tabular-nums"
                 >
                   {cantidades[t.id]}
                 </output>
@@ -142,7 +142,7 @@ export function Taquilla() {
 
       <div className="p-6 sm:p-8">
         <div className="flex items-baseline justify-between">
-          <span className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+          <span className="font-label text-xs text-muted-foreground uppercase">
             Total
           </span>
           <span className="font-heading text-5xl leading-none tabular-nums">

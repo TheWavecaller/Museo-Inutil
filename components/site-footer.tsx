@@ -17,7 +17,7 @@ export function SiteFooter() {
           </div>
 
           <nav aria-label="Pie de página" className="lg:col-span-2">
-            <h2 className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <h2 className="font-label text-xs text-muted-foreground uppercase">
               Índice
             </h2>
             <ul className="mt-4 flex flex-col gap-2 text-sm">
@@ -43,7 +43,7 @@ export function SiteFooter() {
           </nav>
 
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <h2 className="font-label text-xs text-muted-foreground uppercase">
               Visita
             </h2>
             <address className="mt-4 flex flex-col gap-1 text-sm text-muted-foreground not-italic">
@@ -57,7 +57,7 @@ export function SiteFooter() {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+            <h2 className="font-label text-xs text-muted-foreground uppercase">
               Créditos
             </h2>
             <p className="mt-4 text-sm text-pretty text-muted-foreground">
@@ -77,7 +77,7 @@ export function SiteFooter() {
 
         <div className="mt-14 rounded-[var(--radius)] border-2 border-dashed p-5 text-sm text-pretty text-muted-foreground sm:p-6">
           <p>
-            <span className="font-mono text-[0.6875rem] tracking-[0.15em] text-foreground uppercase">
+            <span className="font-label text-xs text-foreground uppercase">
               Aviso ·{" "}
             </span>
             Proyecto académico sin fines comerciales, realizado como ejercicio
@@ -88,7 +88,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-col-reverse gap-4 border-t pt-6 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col-reverse gap-4 border-t pt-6 font-label text-xs text-muted-foreground uppercase sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {expo.name}</p>
           <EnlaceAnimado
             href="#"

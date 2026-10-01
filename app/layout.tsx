@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
-import { Bricolage_Grotesque, Caveat, Space_Mono } from "next/font/google"
+import { Bricolage_Grotesque, Caveat } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
 
-// Una grotesca con carácter para todo el texto (el eje opsz la adapta
-// sola a titulares y a texto pequeño)
+// Una grotesca con carácter para todo el texto. El eje opsz la adapta a
+// titulares y a texto pequeño, y el eje wdth da la versión estrecha de las
+// etiquetas (utilidad font-label)
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   axes: ["opsz", "wdth"],
@@ -19,12 +20,6 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["500", "700"],
   variable: "--font-hand",
-})
-
-const fontMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono",
 })
 
 export const metadata: Metadata = {
@@ -45,7 +40,6 @@ export default function RootLayout({
         "scroll-smooth antialiased",
         bricolage.variable,
         caveat.variable,
-        fontMono.variable,
         "font-sans"
       )}
     >

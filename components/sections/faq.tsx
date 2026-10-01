@@ -91,7 +91,7 @@ export function Faq() {
             <AccordionItem key={p.pregunta} value={i} className="border-b">
               <AccordionTrigger className="items-center gap-6 rounded-none py-6 text-left font-heading text-2xl font-normal hover:no-underline sm:text-3xl [&_[data-slot=accordion-trigger-icon]]:size-5">
                 <span className="flex items-baseline gap-4">
-                  <span className="font-mono text-xs text-muted-foreground tabular-nums">
+                  <span className="font-label text-xs text-muted-foreground tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {p.pregunta}

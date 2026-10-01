@@ -73,10 +73,10 @@ export function Entradas() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-card text-card-foreground shadow-[8px_8px_0_0_var(--foreground)] lg:sticky lg:top-32">
               <div className="flex items-center justify-between bg-foreground px-6 py-3 text-background sm:px-8">
-                <p className="font-mono text-[0.6875rem] tracking-[0.15em] uppercase">
+                <p className="font-label text-xs uppercase">
                   Taquilla online
                 </p>
-                <p className="font-mono text-[0.6875rem] tracking-[0.15em] uppercase">
+                <p className="font-label text-xs uppercase">
                   {expo.venue}
                 </p>
               </div>
@@ -154,7 +154,7 @@ function Ticket({
         </p>
         <p
           className={cn(
-            "mt-2 font-mono text-[0.625rem] tracking-[0.15em] uppercase",
+            "mt-2 font-label text-[0.6875rem] uppercase",
             destacada ? "opacity-70" : "text-muted-foreground"
           )}
         >
