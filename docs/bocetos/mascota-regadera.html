@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 40px; background: #f9f6f0; font-family: "Bricolage Grotesque", sans-serif; color: #1d1915; }
+  h1 { font-weight: 800; letter-spacing: -0.03em; margin: 0 0 6px; font-size: 34px; }
+  p.sub { margin: 0 0 30px; color: #6b655c; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card { background: #fffdf8; border: 2px solid #1d1915; border-radius: 14px; box-shadow: 5px 5px 0 #1d1915; padding: 18px 18px 22px; position: relative; }
+  .card svg { width: 100%; height: auto; display: block; }
+  .tag { display: inline-block; border: 2px solid #1d1915; border-radius: 999px; padding: 3px 10px; font-weight: 800; font-size: 13px; }
+  h2 { margin: 10px 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .desc { margin: 0; font-size: 14px; color: #4e4840; line-height: 1.45; }
+  .bocadillo { position: absolute; top: 58px; right: 16px; background: #eed21b; border: 2px solid #1d1915; border-radius: 14px; padding: 4px 10px; font-family: Caveat, cursive; font-size: 20px; font-weight: 700; transform: rotate(4deg); box-shadow: 2px 2px 0 #1d1915; }
+</style>
+</head>
+<body>
+<h1>Mascota: la Regadera</h1>
+<p class="sub">Tres bocetos de estilo. En los tres, la regadera se riega a sí misma (el chiste de la pieza original).</p>
+
+<div class="grid">
+
+  <!-- A · Adorable -->
+  <div class="card">
+    <span class="tag">A · Adorable</span>
+    <span class="bocadillo">¡Qué fresquita!</span>
+    <svg viewBox="0 0 200 200">
+      <!-- gotas que caen sobre su propia cabeza -->
+      <g fill="#7cc4ea" stroke="#1d1915" stroke-width="1.5">
+        <path d="M96 62 q-4 7 0 9 q4 -2 0 -9z"/>
+        <path d="M108 66 q-4 7 0 9 q4 -2 0 -9z"/>
+        <path d="M86 68 q-4 7 0 9 q4 -2 0 -9z"/>
+      </g>
+      <!-- asa -->
+      <path d="M62 102 C 30 100, 30 152, 62 150" fill="none" stroke="#1d1915" stroke-width="17" stroke-linecap="round"/>
+      <path d="M62 102 C 30 100, 30 152, 62 150" fill="none" stroke="#5aaee0" stroke-width="11" stroke-linecap="round"/>
+      <!-- pitorro en bucle hacia sí misma -->
+      <path d="M136 148 C 178 132, 182 58, 150 40 C 134 31, 120 36, 112 47" fill="none" stroke="#1d1915" stroke-width="13" stroke-linecap="round"/>
+      <path d="M136 148 C 178 132, 182 58, 150 40 C 134 31, 120 36, 112 47" fill="none" stroke="#5aaee0" stroke-width="7" stroke-linecap="round"/>
+      <!-- alcachofa -->
+      <ellipse cx="106" cy="54" rx="13" ry="8" transform="rotate(-35 106 54)" fill="#5aaee0" stroke="#1d1915" stroke-width="3"/>
+      <!-- pies -->
+      <ellipse cx="84" cy="176" rx="12" ry="6" fill="#1d1915"/>
+      <ellipse cx="118" cy="176" rx="12" ry="6" fill="#1d1915"/>
+      <!-- cuerpo -->
+      <rect x="58" y="80" width="84" height="94" rx="22" fill="#5aaee0" stroke="#1d1915" stroke-width="3.5"/>
+      <ellipse cx="100" cy="84" rx="38" ry="8" fill="#2a6f99" stroke="#1d1915" stroke-width="3"/>
+      <!-- brillo -->
+      <path d="M70 100 C 68 115, 68 135, 72 150" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+      <!-- cara -->
+      <circle cx="88" cy="120" r="8" fill="#fff" stroke="#1d1915" stroke-width="2.5"/>
+      <circle cx="114" cy="120" r="8" fill="#fff" stroke="#1d1915" stroke-width="2.5"/>
+      <circle cx="90" cy="122" r="4" fill="#1d1915"/>
+      <circle cx="116" cy="122" r="4" fill="#1d1915"/>
+      <circle cx="91.5" cy="120.5" r="1.3" fill="#fff"/>
+      <circle cx="117.5" cy="120.5" r="1.3" fill="#fff"/>
+      <ellipse cx="78" cy="134" rx="6" ry="3.5" fill="#f2a2a8" opacity=".8"/>
+      <ellipse cx="124" cy="134" rx="6" ry="3.5" fill="#f2a2a8" opacity=".8"/>
+      <path d="M93 136 Q 101 144 109 136" fill="none" stroke="#1d1915" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <h2>Mona y feliz</h2>
+    <p class="desc">Ojos grandes, coloretes y sonrisa. Encantada de regarse. La más amable; funciona muy bien con niños y familias.</p>
+  </div>
+
+  <!-- B · Pegatina (estilo de la web) -->
+  <div class="card">
+    <span class="tag">B · Pegatina</span>
+    <span class="bocadillo">Esto… no sirve.</span>
+    <svg viewBox="0 0 200 200">
+      <!-- sombra dura -->
+      <g transform="translate(5 5)" fill="#1d1915">
+        <path d="M62 102 C 30 100, 30 152, 62 150" fill="none" stroke="#1d1915" stroke-width="17" stroke-linecap="round"/>
+        <path d="M136 148 C 178 132, 182 58, 150 40 C 134 31, 120 36, 112 47" fill="none" stroke="#1d1915" stroke-width="13" stroke-linecap="round"/>
+        <rect x="58" y="80" width="84" height="94" rx="14"/>
+      </g>
+      <!-- gotas -->
+      <g fill="#fff" stroke="#1d1915" stroke-width="2">
+        <path d="M96 62 q-4 7 0 9 q4 -2 0 -9z"/>
+        <path d="M108 66 q-4 7 0 9 q4 -2 0 -9z"/>
+      </g>
+      <path d="M62 102 C 30 100, 30 152, 62 150" fill="none" stroke="#1d1915" stroke-width="17" stroke-linecap="round"/>
+      <path d="M62 102 C 30 100, 30 152, 62 150" fill="none" stroke="#0f7a7c" stroke-width="11" stroke-linecap="round"/>
+      <path d="M136 148 C 178 132, 182 58, 150 40 C 134 31, 120 36, 112 47" fill="none" stroke="#1d1915" stroke-width="13" stroke-linecap="round"/>
+      <path d="M136 148 C 178 132, 182 58, 150 40 C 134 31, 120 36, 112 47" fill="none" stroke="#0f7a7c" stroke-width="7" stroke-linecap="round"/>
+      <ellipse cx="106" cy="54" rx="13" ry="8" transform="rotate(-35 106 54)" fill="#eed21b" stroke="#1d1915" stroke-width="3"/>
+      <rect x="58" y="80" width="84" height="94" rx="14" fill="#0f7a7c" stroke="#1d1915" stroke-width="3.5"/>
+      <ellipse cx="100" cy="84" rx="38" ry="7" fill="#0a5557" stroke="#1d1915" stroke-width="3"/>
+      <!-- cara inexpresiva: párpados a media asta -->
+      <circle cx="88" cy="122" r="8" fill="#fff" stroke="#1d1915" stroke-width="2.5"/>
+      <circle cx="114" cy="122" r="8" fill="#fff" stroke="#1d1915" stroke-width="2.5"/>
+      <circle cx="88" cy="125" r="3.5" fill="#1d1915"/>
+      <circle cx="114" cy="125" r="3.5" fill="#1d1915"/>
+      <path d="M79 120 H 97 M105 120 H 123" stroke="#1d1915" stroke-width="3" stroke-linecap="round"/>
+      <path d="M80 117 A 8 8 0 0 1 96 117 Z M106 117 A 8 8 0 0 1 122 117 Z" fill="#0f7a7c"/>
+      <path d="M94 142 H 108" stroke="#1d1915" stroke-width="3" stroke-linecap="round"/>
+      <!-- gota de sudor -->
+      <path d="M134 98 q-5 9 0 11 q5 -2 0 -11z" fill="#fff" stroke="#1d1915" stroke-width="2"/>
+      <!-- patitas de palo -->
+      <path d="M85 174 V 186 H 78 M115 174 V 186 H 122" fill="none" stroke="#1d1915" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h2>Pegatina resignada</h2>
+    <p class="desc">Hecha con nuestro lenguaje: borde negro, sombra dura, acuamarino y amarillo. Cara de póker: sabe que no sirve. La más coherente con la web.</p>
+  </div>
+
+  <!-- C · Garabato -->
+  <div class="card">
+    <span class="tag">C · Garabato</span>
+    <span class="bocadillo">splash splash</span>
+    <svg viewBox="0 0 200 200" fill="none" stroke="#1d1915" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- relleno desplazado tipo risografía -->
+      <path d="M64 86 C 62 120, 62 150, 68 172 L 134 172 C 140 150, 141 118, 138 86 Z" fill="#9fd8d2" stroke="none" transform="translate(6 4)"/>
+      <!-- cuerpo dibujado a mano, algo torcido -->
+      <path d="M62 84 C 60 118, 61 150, 66 172 L 132 174 C 139 150, 140 116, 138 84"/>
+      <path d="M60 85 C 80 76, 120 76, 139 84 C 120 92, 80 92, 60 85 Z"/>
+      <path d="M62 102 C 34 98, 33 150, 64 150"/>
+      <path d="M64 112 C 46 112, 46 140, 64 140"/>
+      <path d="M134 150 C 176 134, 180 60, 150 42 C 134 33, 121 37, 113 47"/>
+      <path d="M140 140 C 168 126, 170 66, 148 52 C 136 45, 126 48, 120 55"/>
+      <path d="M100 48 C 104 60, 120 62, 124 50 Z"/>
+      <!-- gotitas como rayitas -->
+      <path d="M98 66 v6 M108 70 v6 M90 72 v5" stroke="#0f7a7c"/>
+      <!-- cara -->
+      <path d="M84 118 q4 -5 8 0 M106 118 q4 -5 8 0"/>
+      <path d="M92 134 q7 8 14 0"/>
+      <!-- patas -->
+      <path d="M84 174 l-4 12 M116 174 l4 12"/>
+    </svg>
+    <h2>Garabato del comisario</h2>
+    <p class="desc">Trazo a mano, como las notas en Caveat, con relleno descolocado. Ojos cerrados de felicidad. La más artesanal y ligera.</p>
+  </div>
+
+</div>
+</body>
+</html>

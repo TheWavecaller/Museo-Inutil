@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (revisión general, optimización y subida a GitHub)
+Última actualización: 2026-10-01 (idea de mascota: bocetos de la Regadera)
 
 - **Repositorio:** https://github.com/TheWavecaller/Museo-Inutil (rama `main`)
 - **Commits** firmados como TheWavecaller, con la identidad configurada solo en este repositorio.
@@ -146,10 +146,35 @@ Están centralizados en **`lib/expo.ts`**: si se cambian ahí, cambian en toda l
 
 ---
 
-## 6. Pendientes
+## 6. Idea en curso: mascota que acompaña el scroll
+
+El cliente quiere una "mascotilla" que siga al usuario mientras hace scroll y haga cosas, sin que sea complicada ni quede fuera de lugar.
+
+- **Opciones open source descartadas:**
+  - oneko.js: gato pixel art que sigue al cursor; su estética choca con la web.
+  - Lottie: licencias no del todo abiertas, difícil de encajar y casi todo son bucles.
+  - Rive: potente, pero los personajes tienen licencias variadas y hay que aprender su editor.
+- **Decisión:** mascota **propia en SVG animada con `motion`**, sin dependencias ni problemas de licencia. Personaje elegido: **la Regadera** (pieza Nº 002), que **se riega a sí misma**, el chiste de la pieza original.
+- **Bocetos** en `docs/bocetos/mascota-regadera.html` (y `.png`), tres estilos:
+  - **A · Mona y feliz:** azul cielo, ojos grandes, coloretes.
+  - **B · Pegatina resignada:** borde negro, sombra dura, acuamarino, alcachofa amarilla y cara de póker con gota de sudor. **Es la recomendada**, por ser la más coherente con la web.
+  - **C · Garabato del comisario:** trazo a mano con relleno descolocado.
+  - También se puede mezclar, por ejemplo la B con la ternura de la A (sonríe en Entradas).
+- **⏳ Falta que el cliente elija estilo.**
+- **Comportamiento previsto:**
+  - Fija en una esquina.
+  - Bocadillo manuscrito que comenta cada sección; reutiliza `useSeccionActiva` del header. Ejemplos: "¿Esto? No sirve" en la Colección, "¡Aquí sí! Compra, compra" en Entradas.
+  - Parpadea, gotea y reacciona al scroll: se inclina al bajar rápido y se duerme si te paras.
+  - Al pulsarla salpica y suelta un chiste.
+- **Precauciones:** pequeña, con botón para esconderla, más discreta en móvil, quieta con "reducir movimiento" y `aria-hidden`.
+
+---
+
+## 7. Pendientes
 
 - [ ] **Desplegar en Vercel** (conectar el repositorio de GitHub).
 - [ ] **Verificar las líneas de bus (V15, 196)** en la web de CosmoCaixa.
 - [ ] **Crédito de la foto de CosmoCaixa** (falta saber de dónde es).
 - [ ] Imagen de Open Graph para compartir en redes.
+- [ ] **Mascota Regadera:** elegir estilo (A/B/C) y construirla (ver sección 6).
 - [ ] (Opcional) Pedir permiso a Katerina Kamprani para usar sus imágenes.
