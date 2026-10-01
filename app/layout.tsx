@@ -22,9 +22,21 @@ const caveat = Caveat({
   variable: "--font-hand",
 })
 
+const titulo = `${expo.name} · ${expo.venue} ${expo.city}`
+const descripcion = `${expo.claim} Exposición temporal de objetos cotidianos rediseñados para no funcionar. ${expo.dates.label} en ${expo.venue} ${expo.city}. Entradas anticipadas a ${expo.tickets.early} €.`
+
 export const metadata: Metadata = {
-  title: `${expo.name} · ${expo.venue} ${expo.city}`,
-  description: `${expo.claim} Exposición temporal de inventos absurdos y fracasos comerciales. ${expo.dates.label} en ${expo.venue} ${expo.city}. Entradas anticipadas a ${expo.tickets.early} €.`,
+  title: titulo,
+  description: descripcion,
+  // Cómo se ve el enlace al compartirlo (WhatsApp, redes, Slack…)
+  openGraph: {
+    title: titulo,
+    description: descripcion,
+    siteName: expo.name,
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: { card: "summary", title: titulo, description: descripcion },
 }
 
 export default function RootLayout({
@@ -44,7 +56,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider defaultTheme="light">{children}</ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )

@@ -22,12 +22,13 @@ import { cn } from "@/lib/utils"
 // Piezas visibles antes de pulsar "Ver más". Con la destacada (2×2) y la
 // tarjeta de la entrada, 11 piezas completan filas exactas de 3 y de 2.
 const VISIBLES = 11
+// En móvil (una sola columna) se enseñan menos para no alargar el scroll
+const VISIBLES_MOVIL = 5
 
 export function ColeccionGrid() {
   const [abierta, setAbierta] = useState(false)
   const [icono, disparadores] = useIconoAnimado()
   const piezas = abierta ? coleccion : coleccion.slice(0, VISIBLES)
-  const ocultas = coleccion.length - VISIBLES
 
   function alternar() {
     if (abierta) {
@@ -48,7 +49,8 @@ export function ColeccionGrid() {
             key={pieza.slug}
             className={cn(
               i === 0 && "md:col-span-2 md:row-span-2",
-              i >= VISIBLES && "animate-in duration-500 fade-in"
+              i >= VISIBLES && "animate-in duration-500 fade-in",
+              !abierta && i >= VISIBLES_MOVIL && "hidden md:block"
             )}
           >
             <Ficha pieza={pieza} destacada={i === 0} />
@@ -88,7 +90,7 @@ export function ColeccionGrid() {
         </Button>
         {!abierta && (
           <p className="font-label text-xs text-muted-foreground uppercase">
-            {ocultas} objetos inútiles más en el almacén
+            {coleccion.length} piezas en total · ninguna sirve
           </p>
         )}
       </div>

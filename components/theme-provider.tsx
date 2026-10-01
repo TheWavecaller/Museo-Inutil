@@ -1,9 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { MotionConfig } from "motion/react"
 
+// La web solo está diseñada en claro: se fuerza el tema claro (sin seguir
+// al sistema ni atajo de teclado). Las secciones oscuras, como el Manifiesto
+// o el CTA final, usan la clase .dark solo en su bloque.
 function ThemeProvider({
   children,
   ...props
@@ -11,63 +14,14 @@ function ThemeProvider({
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="system"
-      enableSystem
+      forcedTheme="light"
       disableTransitionOnChange
       {...props}
     >
-      <ThemeHotkey />
-      {/* Los iconos animados se quedan quietos si el sistema pide reducir movimiento */}
+      {/* Las animaciones se quedan quietas si el sistema pide reducir movimiento */}
       <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </NextThemesProvider>
   )
-}
-
-function isTypingTarget(target: EventTarget | null) {
-  if (!(target instanceof HTMLElement)) {
-    return false
-  }
-
-  return (
-    target.isContentEditable ||
-    target.tagName === "INPUT" ||
-    target.tagName === "TEXTAREA" ||
-    target.tagName === "SELECT"
-  )
-}
-
-function ThemeHotkey() {
-  const { resolvedTheme, setTheme } = useTheme()
-
-  React.useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.defaultPrevented || event.repeat) {
-        return
-      }
-
-      if (event.metaKey || event.ctrlKey || event.altKey) {
-        return
-      }
-
-      if (event.key.toLowerCase() !== "d") {
-        return
-      }
-
-      if (isTypingTarget(event.target)) {
-        return
-      }
-
-      setTheme(resolvedTheme === "dark" ? "light" : "dark")
-    }
-
-    window.addEventListener("keydown", onKeyDown)
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown)
-    }
-  }, [resolvedTheme, setTheme])
-
-  return null
 }
 
 export { ThemeProvider }
