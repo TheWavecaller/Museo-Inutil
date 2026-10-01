@@ -35,9 +35,7 @@ export function Manifiesto() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="flex flex-col justify-center lg:col-span-7">
-            <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-              Texto de sala · Por qué esta exposición
-            </p>
+            <p className="etiqueta">Texto de sala · Por qué esta exposición</p>
 
             <h2
               id="manifiesto-title"
@@ -59,7 +57,7 @@ export function Manifiesto() {
             <Nota flecha="abajo" className="mb-1 ml-6 rotate-2">
               aquí es (el de cristal)
             </Nota>
-            <div className="relative aspect-[6/7] overflow-hidden border">
+            <div className="relative aspect-[6/7] overflow-hidden rounded-[var(--radius)] border-2 border-foreground">
               <Image
                 src="/multimedia/cosmocaixa.webp"
                 alt={`Vista aérea del edificio de ${expo.venue} y su plaza, en ${expo.city}`}
@@ -77,7 +75,7 @@ export function Manifiesto() {
           </figure>
         </div>
 
-        <ol className="mt-16 grid gap-px border bg-border md:grid-cols-3 lg:mt-24">
+        <ol className="mt-16 grid gap-px overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-border md:grid-cols-3 lg:mt-24">
           {principios.map((p) => (
             <li
               key={p.numero}

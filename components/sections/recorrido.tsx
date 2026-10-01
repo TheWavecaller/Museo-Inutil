@@ -1,9 +1,9 @@
-import { ArrowRightIcon } from "lucide-react"
-
 import { buttonVariants } from "@/components/ui/button"
 import { autora, coleccion } from "@/lib/coleccion"
 import { expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
 
 const paradas = [
   {
@@ -49,9 +49,7 @@ export function Recorrido() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-              El recorrido · 45 minutos
-            </p>
+            <p className="etiqueta">El recorrido · 45 minutos</p>
             <h2
               id="recorrido-title"
               className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
@@ -73,7 +71,7 @@ export function Recorrido() {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute top-1 -left-[2.3125rem] size-3 border-2 border-foreground bg-background lg:top-[-0.4375rem] lg:left-0",
+                  "absolute top-1 -left-[2.3125rem] size-3 rounded-full border-2 border-foreground bg-background lg:top-[-0.4375rem] lg:left-0",
                   i === paradas.length - 1 && "bg-primary"
                 )}
               />
@@ -87,7 +85,7 @@ export function Recorrido() {
               <p className="mt-3 text-sm leading-relaxed text-pretty text-muted-foreground">
                 {parada.texto}
               </p>
-              <p className="mt-5 inline-block border px-2 py-1 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
+              <p className="mt-5 inline-block rounded-full border-2 border-foreground bg-card px-3 py-1 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
                 {parada.etiqueta}
               </p>
             </li>
@@ -100,16 +98,16 @@ export function Recorrido() {
             en todos los museos. Aquí, al menos, avisamos: nada de lo que
             vendemos sirve. Recorrido accesible y apto para todos los públicos.
           </p>
-          <a
+          <EnlaceAnimado
             href="#entradas"
             className={cn(
               buttonVariants({ size: "lg" }),
               "h-12 shrink-0 px-6 text-base"
             )}
+            icono={ArrowRightIcon}
           >
             Reservar mi visita · {expo.tickets.early} €
-            <ArrowRightIcon data-icon="inline-end" />
-          </a>
+          </EnlaceAnimado>
         </div>
       </div>
     </section>

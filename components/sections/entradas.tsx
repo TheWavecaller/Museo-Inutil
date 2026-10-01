@@ -46,9 +46,7 @@ export function Entradas() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="font-mono text-xs tracking-[0.2em] uppercase opacity-80">
-              Entradas · {expo.dates.label}
-            </p>
+            <p className="etiqueta">Entradas · {expo.dates.label}</p>
             <h2
               id="entradas-title"
               className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl lg:text-7xl"
@@ -103,7 +101,7 @@ function Ticket({
   return (
     <article
       className={cn(
-        "relative grid grid-cols-[1fr_auto]",
+        "relative grid grid-cols-[1fr_auto] rounded-[var(--radius)]",
         destacada
           ? "bg-foreground text-background"
           : "bg-card text-card-foreground"

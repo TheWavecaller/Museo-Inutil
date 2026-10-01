@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
+import { MotionConfig } from "motion/react"
 
 function ThemeProvider({
   children,
@@ -16,7 +17,8 @@ function ThemeProvider({
       {...props}
     >
       <ThemeHotkey />
-      {children}
+      {/* Los iconos animados se quedan quietos si el sistema pide reducir movimiento */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </NextThemesProvider>
   )
 }

@@ -1,5 +1,5 @@
-import { ArrowUpIcon } from "lucide-react"
-
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowUpIcon } from "@/components/icons/arrow-up"
 import { Logo } from "@/components/logo"
 import { autora } from "@/lib/coleccion"
 import { expo, nav } from "@/lib/expo"
@@ -75,7 +75,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14 border border-dashed p-5 text-sm text-pretty text-muted-foreground sm:p-6">
+        <div className="mt-14 rounded-[var(--radius)] border-2 border-dashed p-5 text-sm text-pretty text-muted-foreground sm:p-6">
           <p>
             <span className="font-mono text-[0.6875rem] tracking-[0.15em] text-foreground uppercase">
               Aviso ·{" "}
@@ -90,13 +90,14 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col-reverse gap-4 border-t pt-6 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {expo.name}</p>
-          <a
+          <EnlaceAnimado
             href="#"
+            icono={ArrowUpIcon}
+            tamano={14}
             className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
           >
             Volver arriba
-            <ArrowUpIcon className="size-3.5" />
-          </a>
+          </EnlaceAnimado>
         </div>
       </div>
     </footer>

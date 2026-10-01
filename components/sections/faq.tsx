@@ -1,5 +1,3 @@
-import { ArrowRightIcon } from "lucide-react"
-
 import { buttonVariants } from "@/components/ui/button"
 import {
   Accordion,
@@ -9,6 +7,8 @@ import {
 } from "@/components/ui/accordion"
 import { autora } from "@/lib/coleccion"
 import { expo } from "@/lib/expo"
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
 import { cn } from "@/lib/utils"
 
 const preguntas = [
@@ -62,9 +62,7 @@ export function Faq() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-28">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
-            <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-              Preguntas frecuentes
-            </p>
+            <p className="etiqueta">Preguntas frecuentes</p>
             <h2
               id="faq-title"
               className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
@@ -75,16 +73,16 @@ export function Faq() {
               Sobre una exposición que no lo es. Si la tuya no está aquí,
               pregunta en el mostrador de información de {expo.venue}.
             </p>
-            <a
+            <EnlaceAnimado
               href="#entradas"
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "mt-8 h-12 px-6 text-base"
               )}
+              icono={ArrowRightIcon}
             >
               Comprar entrada · {expo.tickets.early} €
-              <ArrowRightIcon data-icon="inline-end" />
-            </a>
+            </EnlaceAnimado>
           </div>
         </div>
 

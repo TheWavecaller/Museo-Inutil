@@ -1,11 +1,12 @@
 import Image from "next/image"
-import { ArrowRightIcon } from "lucide-react"
 
 import { Pegatina } from "@/components/garabatos"
 import { buttonVariants } from "@/components/ui/button"
 import { coleccion, numeroPieza } from "@/lib/coleccion"
 import { enLetras, expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
 
 // Cierre de la página: misma sala a oscuras que el Manifiesto, para que
 // ambos funcionen como apertura y cierre.
@@ -16,9 +17,7 @@ export function CtaFinal() {
       className="dark overflow-hidden bg-background text-foreground"
     >
       <div className="mx-auto max-w-7xl px-4 pt-20 pb-14 text-center sm:px-6 lg:pt-32 lg:pb-20">
-        <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-          Últimas semanas desde el primer día
-        </p>
+        <p className="mx-auto etiqueta">Últimas semanas desde el primer día</p>
         <Pegatina className="mt-6 rotate-3 text-2xl">¡Corre! (o no)</Pegatina>
         <h2
           id="cta-title"
@@ -32,16 +31,16 @@ export function CtaFinal() {
           estas piezas volverán a su sitio, que tampoco es muy útil.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
+          <EnlaceAnimado
             href="#entradas"
             className={cn(
               buttonVariants({ size: "lg" }),
               "h-14 px-8 text-base sm:text-lg"
             )}
+            icono={ArrowRightIcon}
           >
             Comprar entrada anticipada · {expo.tickets.early} €
-            <ArrowRightIcon data-icon="inline-end" />
-          </a>
+          </EnlaceAnimado>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
           En taquilla, {expo.tickets.general} €. Ya lo sabías, pero por si

@@ -1,7 +1,7 @@
-import { ArrowRightIcon } from "lucide-react"
-
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
 
 type Actividad = {
   dia: string
@@ -132,9 +132,7 @@ export function Programa() {
     >
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-            Programa · 4 semanas
-          </p>
+          <p className="etiqueta">Programa · 4 semanas</p>
           <h2
             id="programa-title"
             className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
@@ -150,7 +148,7 @@ export function Programa() {
         </p>
       </div>
 
-      <ol className="mt-14 grid gap-px border bg-border md:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-border md:grid-cols-2 lg:grid-cols-4">
         {semanas.map((semana) => (
           <li
             key={semana.numero}
@@ -213,7 +211,7 @@ export function Programa() {
                     >
                       {a.texto}
                     </p>
-                    <p className="mt-3 inline-block border border-current/30 px-2 py-0.5 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
+                    <p className="mt-3 inline-block rounded-full border border-current/40 px-2.5 py-0.5 font-mono text-[0.625rem] tracking-[0.15em] uppercase">
                       {a.etiqueta}
                     </p>
                   </div>
@@ -229,16 +227,16 @@ export function Programa() {
           La Noche inútil es exclusiva para quienes compran la entrada
           anticipada.
         </p>
-        <a
+        <EnlaceAnimado
           href="#entradas"
           className={cn(
             buttonVariants({ variant: "outline", size: "lg" }),
             "h-12 shrink-0 px-6 text-base"
           )}
+          icono={ArrowRightIcon}
         >
           Ver entradas
-          <ArrowRightIcon data-icon="inline-end" />
-        </a>
+        </EnlaceAnimado>
       </div>
     </section>
   )

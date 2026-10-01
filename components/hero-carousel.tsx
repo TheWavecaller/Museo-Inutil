@@ -3,14 +3,13 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  PauseIcon,
-  PlayIcon,
-} from "lucide-react"
 
+import { useIconoAnimado, type IconoAnimado } from "@/components/animado"
 import { Pegatina } from "@/components/garabatos"
+import { ChevronLeftIcon } from "@/components/icons/chevron-left"
+import { ChevronRightIcon } from "@/components/icons/chevron-right"
+import { PauseIcon } from "@/components/icons/pause"
+import { PlayIcon } from "@/components/icons/play"
 import { Button } from "@/components/ui/button"
 import {
   Carousel,
@@ -135,35 +134,27 @@ export function HeroCarousel() {
 
         <div className="flex items-center justify-between border-t px-2 py-1">
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              size="icon"
+            <BotonIcono
+              icono={ChevronLeftIcon}
               onClick={() => api?.scrollPrev()}
               aria-label="Pieza anterior"
-            >
-              <ChevronLeftIcon />
-            </Button>
+            />
             <span className="px-1 font-mono text-xs text-muted-foreground tabular-nums">
               {String(actual + 1).padStart(2, "0")} /{" "}
               {String(coleccion.length).padStart(2, "0")}
             </span>
-            <Button
-              variant="ghost"
-              size="icon"
+            <BotonIcono
+              icono={ChevronRightIcon}
               onClick={() => api?.scrollNext()}
               aria-label="Pieza siguiente"
-            >
-              <ChevronRightIcon />
-            </Button>
+            />
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
+          <BotonIcono
+            key={enMarcha ? "pausa" : "play"}
+            icono={enMarcha ? PauseIcon : PlayIcon}
             onClick={alternar}
             aria-label={enMarcha ? "Pausar carrusel" : "Reanudar carrusel"}
-          >
-            {enMarcha ? <PauseIcon /> : <PlayIcon />}
-          </Button>
+          />
         </div>
 
         <div className="h-0.5 bg-muted" aria-hidden="true">
@@ -174,5 +165,19 @@ export function HeroCarousel() {
         </div>
       </figcaption>
     </figure>
+  )
+}
+
+// Botón de control con un icono animado al pasar el ratón o con el foco
+function BotonIcono({
+  icono: Icono,
+  ...props
+}: React.ComponentProps<typeof Button> & { icono: IconoAnimado }) {
+  const [ref, disparadores] = useIconoAnimado()
+
+  return (
+    <Button variant="ghost" size="icon" {...props} {...disparadores}>
+      <Icono ref={ref} size={16} aria-hidden="true" />
+    </Button>
   )
 }

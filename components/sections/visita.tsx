@@ -1,15 +1,21 @@
 import {
-  AccessibilityIcon,
-  ArrowUpRightIcon,
   BusFrontIcon,
   CarIcon,
-  ClockIcon,
-  MapPinIcon,
   TrainFrontIcon,
+  type LucideIcon,
 } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
 import { expo } from "@/lib/expo"
+import {
+  BloqueAnimado,
+  EnlaceAnimado,
+  type IconoAnimado,
+} from "@/components/animado"
+import { AccessibilityIcon } from "@/components/icons/accessibility"
+import { ClockIcon } from "@/components/icons/clock"
+import { MapPinIcon } from "@/components/icons/map-pin"
+import { ArrowUpRightIcon } from "@/components/icons/arrow-up-right"
 import { cn } from "@/lib/utils"
 
 // Embed de Google Maps sin API key. La búsqueda por nombre coloca el pin
@@ -41,7 +47,7 @@ export function Visita() {
     >
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
+          <p className="etiqueta">
             Visita · {expo.venue} {expo.city}
           </p>
           <h2
@@ -112,7 +118,7 @@ export function Visita() {
           </div>
           <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-4 font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
             <span>Fig. 2 · Cómo llegar</span>
-            <a
+            <EnlaceAnimado
               href={mapaEnlace}
               target="_blank"
               rel="noreferrer"
@@ -120,10 +126,10 @@ export function Visita() {
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-10 px-4 font-sans text-sm tracking-normal normal-case"
               )}
+              icono={ArrowUpRightIcon}
             >
               Abrir en Google Maps
-              <ArrowUpRightIcon data-icon="inline-end" />
-            </a>
+            </EnlaceAnimado>
           </figcaption>
         </figure>
       </div>
@@ -132,23 +138,44 @@ export function Visita() {
 }
 
 function Dato({
-  icono: Icono,
+  icono,
   titulo,
   children,
 }: {
-  icono: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>
+  // Un icono animado (se anima al pasar por la fila) o uno estático de lucide
+  icono: IconoAnimado | LucideIcon
   titulo: string
   children: React.ReactNode
 }) {
-  return (
-    <div className="grid grid-cols-[auto_1fr] gap-x-4 border-b py-6">
-      <Icono aria-hidden className="mt-0.5 size-5 text-primary" />
-      <div>
-        <dt className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
-          {titulo}
-        </dt>
-        <dd className="mt-2 flex flex-col gap-0.5">{children}</dd>
-      </div>
+  const clases = "grid grid-cols-[auto_1fr] gap-x-4 border-b py-6"
+  const contenido = (
+    <div>
+      <dt className="font-mono text-[0.6875rem] tracking-[0.15em] text-muted-foreground uppercase">
+        {titulo}
+      </dt>
+      <dd className="mt-2 flex flex-col gap-0.5">{children}</dd>
     </div>
+  )
+
+  // Los iconos de lucide son funciones normales y no pueden pasar a un
+  // componente de cliente: se pintan aquí, en el servidor
+  if (icono === TrainFrontIcon) {
+    const Icono = icono as LucideIcon
+    return (
+      <div className={clases}>
+        <Icono aria-hidden className="mt-0.5 size-5 text-primary" />
+        {contenido}
+      </div>
+    )
+  }
+
+  return (
+    <BloqueAnimado
+      icono={icono as IconoAnimado}
+      iconoClassName="mt-0.5 text-primary"
+      className={clases}
+    >
+      {contenido}
+    </BloqueAnimado>
   )
 }

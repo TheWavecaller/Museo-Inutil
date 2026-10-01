@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { MenuIcon } from "lucide-react"
 
+import { useIconoAnimado } from "@/components/animado"
+import { MenuIcon } from "@/components/icons/menu"
 import { Logo } from "@/components/logo"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -44,27 +45,32 @@ const ids = [...nav.map((item) => item.href.slice(1)), "entradas"]
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const activa = useSeccionActiva(ids)
+  const [iconoMenu, disparadoresMenu] = useIconoAnimado()
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="bg-foreground text-background">
-        <p className="mx-auto max-w-7xl px-4 py-2 text-center font-mono text-[0.6875rem] tracking-[0.15em] uppercase sm:px-6">
-          {expo.dates.label} · {expo.venue} {expo.city}
+      <div className="border-b-2 border-foreground bg-pop text-pop-foreground">
+        <p className="mx-auto flex max-w-7xl items-baseline justify-center gap-x-2 px-4 py-1.5 text-sm font-semibold sm:px-6">
+          <span>
+            {expo.dates.label} · {expo.venue} {expo.city}
+          </span>
           <span className="hidden sm:inline">
-            {" "}
-            · Entrada anticipada {expo.tickets.early} €
+            · Anticipada {expo.tickets.early} €
+          </span>
+          <span className="hidden font-hand text-lg leading-none font-bold md:inline">
+            (y nada de esto sirve)
           </span>
         </p>
       </div>
 
-      <div className="border-b bg-background/90 backdrop-blur-md">
+      <div className="border-b-2 border-foreground bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:h-20 sm:px-6">
           <a href="#" aria-label={`${expo.name}, inicio`}>
             <Logo />
           </a>
 
           <nav aria-label="Principal" className="hidden lg:block">
-            <ul className="flex items-center gap-6 xl:gap-8">
+            <ul className="flex items-center gap-0.5 rounded-full border-2 border-foreground bg-card p-1">
               {nav.map((item) => (
                 <li key={item.href}>
                   <a
@@ -72,7 +78,7 @@ export function SiteHeader() {
                     aria-current={
                       activa === item.href.slice(1) ? "location" : undefined
                     }
-                    className="relative text-sm text-muted-foreground transition-colors after:absolute after:inset-x-0 after:-bottom-2 after:h-0.5 after:scale-x-0 after:bg-primary after:transition-transform hover:text-foreground aria-[current]:text-foreground aria-[current]:after:scale-x-100"
+                    className="block rounded-full px-3.5 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground aria-[current]:bg-foreground aria-[current]:text-background xl:px-4"
                   >
                     {item.label}
                   </a>
@@ -87,8 +93,7 @@ export function SiteHeader() {
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "hidden px-4 sm:inline-flex",
-                activa === "entradas" &&
-                  "ring-3 ring-primary/30 ring-offset-2 ring-offset-background"
+                activa === "entradas" && "bg-pop text-pop-foreground"
               )}
             >
               Comprar entradas
@@ -97,19 +102,20 @@ export function SiteHeader() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger
                 className={cn(
-                  buttonVariants({ variant: "ghost", size: "icon-lg" }),
-                  "lg:hidden"
+                  buttonVariants({ variant: "outline", size: "icon-lg" }),
+                  "size-11 lg:hidden"
                 )}
                 aria-label="Abrir menú"
+                {...disparadoresMenu}
               >
-                <MenuIcon className="size-5" />
+                <MenuIcon ref={iconoMenu} size={20} aria-hidden="true" />
               </SheetTrigger>
               <SheetContent side="right" className="gap-0">
-                <SheetHeader className="border-b p-6">
-                  <SheetTitle className="font-heading text-2xl font-normal">
+                <SheetHeader className="border-b-2 border-foreground bg-pop p-6 text-pop-foreground">
+                  <SheetTitle className="font-heading text-3xl text-pop-foreground">
                     Menú
                   </SheetTitle>
-                  <SheetDescription>
+                  <SheetDescription className="text-pop-foreground/80">
                     {expo.dates.label} · {expo.venue}
                   </SheetDescription>
                 </SheetHeader>
@@ -125,7 +131,7 @@ export function SiteHeader() {
                               ? "location"
                               : undefined
                           }
-                          className="flex items-baseline gap-4 border-b py-4 font-heading text-3xl aria-[current]:text-primary"
+                          className="flex items-baseline gap-4 border-b py-4 font-heading text-3xl transition-transform hover:translate-x-1 aria-[current]:text-primary"
                         >
                           <span className="font-mono text-xs text-muted-foreground">
                             {String(i + 1).padStart(2, "0")}

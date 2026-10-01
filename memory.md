@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (prueba de estilo informal en la rama `estilo-informal`)
+Última actualización: 2026-10-01 (estilo informal definitivo, iconos animados y header nuevo)
 
 ---
 
@@ -36,15 +36,21 @@ Proyecto de clase **"My First Professional Landing Page"**: trabajamos como un p
   - Esquinas casi rectas (`--radius: 0.125rem`).
 - **Tono:** irónico pero elegante, con frases cortas. Ejemplo: *"En taquilla costará 12 €. Lo cual tampoco tendría ningún sentido."*
 
-### Versiones de estilo (git)
-- **`main` / etiqueta `v1-catalogo`:** estética de catálogo de museo con Instrument Serif, Inter, Geist Mono y palabras destacadas en cursiva acuamarina.
-- **Rama `estilo-informal`** (en prueba, 2026-10-01). El cliente pidió algo más informal, gracioso y menos "página IA genérica":
-  - **Fuentes:** Bricolage Grotesque para todo (titulares en peso 800, con interletraje apretado), Caveat para las anotaciones manuscritas y Space Mono como monoespaciada.
-  - **Palabras destacadas:** con un **trazo de rotulador fosforito** (`--marker`) en vez de cursiva. Es CSS sin capa en `globals.css`; en la sección Entradas el trazo es oscuro.
-  - **Elementos humorísticos** (`components/garabatos.tsx`): `<Pegatina>` amarilla torcida (`--pop`, el amarillo de las botas): "¡No funciona!", "¡Pieza estrella!", "¡Recomendada!", "¡Corre! (o no)". `<Nota>` manuscrita con flecha: "lo único que funciona aquí" bajo el botón del hero y "aquí es (el de cristal)" sobre la foto de la sede.
-  - **Botones:** píldora con borde negro y sombra dura, que se hunde al pulsar (`components/ui/button.tsx`).
-  - **Cajas con sombra** (cartela del hero, taquilla y mapa): esquinas redondeadas y borde de 2 px.
-  - **Números romanos del Manifiesto:** en letra manuscrita.
+### Estilo definitivo: informal (desde 2026-10-01)
+La versión informal está fusionada en `main`. La de catálogo solo queda en la etiqueta `v1-catalogo` como referencia.
+- **Fuentes:** Bricolage Grotesque para todo (titulares en peso 800, con interletraje apretado), Caveat (`font-hand`) para las anotaciones y Space Mono como monoespaciada.
+- **Palabras destacadas:** con trazo de rotulador fosforito (`--marker`), en CSS sin capa en `globals.css`. En Entradas el trazo es oscuro.
+- **Humor** (`components/garabatos.tsx`): `<Pegatina>` amarilla torcida (`--pop`) y `<Nota>` manuscrita con flecha. Usarlas con mesura, como mucho una por sección.
+- **Lenguaje de formas:** bordes de 2 px en `foreground`, esquinas `rounded-[var(--radius)]`, sombras duras desplazadas y píldoras (`rounded-full`) para botones, etiquetas y menú.
+- **Botones** (`components/ui/button.tsx`): píldora con sombra dura; se levanta al pasar el ratón y se hunde al pulsar.
+- **Etiquetas de sección:** utilidad `etiqueta` en `globals.css`, una píldora con borde y punto amarillo. Ocupa solo su texto, en su propia línea; en bloques centrados hay que añadir `mx-auto`.
+- **Header:** franja superior **amarilla** con la coletilla manuscrita "(y nada de esto sirve)", menú en grupo de píldoras con la sección activa en píldora negra, bordes de 2 px y botón redondo para el menú móvil.
+- **Iconos animados:** [lucide-animated](https://lucide-animated.com) (MIT, librería `motion`), 15 iconos en `components/icons/` instalados con `npx shadcn add https://lucide-animated.com/r/<nombre>.json --path components/icons`. **Modificados** para envolverse en `<span>` en lugar de `<div>`, para que sean válidos dentro de botones y enlaces. Al instalar uno nuevo hay que repetir ese cambio.
+  - `components/animado.tsx`: el hook `useIconoAnimado()` dispara la animación al pasar el ratón o el foco por **todo** el botón o enlace, no solo por el icono. También están `<EnlaceAnimado icono={…}>` para los enlaces-botón y `<BloqueAnimado>` para las filas de la Visita.
+  - Dónde se usan: flechas de todos los botones de compra, "Ver la colección", "Abrir en Google Maps", "Volver arriba", controles del carrusel, "Ver más/menos", menú móvil, iconos de la Visita (pin, reloj, accesibilidad) y el check de la compra, que se dibuja al aparecer.
+  - **Siguen siendo estáticos:** tren, bus y coche (no tienen versión animada), los checks de las tarifas, los +/− de la taquilla y los chevrons del FAQ.
+  - ⚠️ Un icono normal de lucide **no se puede pasar como prop** de un componente de servidor a uno de cliente: da "Functions cannot be passed directly to Client Components". Los de `components/icons` sí, porque son módulos `"use client"`.
+  - `MotionConfig reducedMotion="user"` en `theme-provider.tsx`: las animaciones respetan "reducir movimiento".
 
 ### Datos de la exposición (inventados y verosímiles)
 Están centralizados en `lib/expo.ts`. Si se cambian ahí, cambian en toda la web.

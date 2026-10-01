@@ -1,8 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { CheckIcon, MinusIcon, PlusIcon } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { MinusIcon, PlusIcon } from "lucide-react"
 
+import type { IconoHandle } from "@/components/animado"
+import { CheckIcon } from "@/components/icons/check"
 import { Button } from "@/components/ui/button"
 import { diasDeApertura, expo } from "@/lib/expo"
 
@@ -44,7 +46,7 @@ export function Taquilla() {
     return (
       <div className="flex flex-col items-start gap-4 p-6 sm:p-8" role="status">
         <span className="flex size-10 items-center justify-center bg-primary text-primary-foreground">
-          <CheckIcon />
+          <CheckQueSeDibuja />
         </span>
         <p className="font-heading text-3xl leading-tight">¡Listo! O casi.</p>
         <p className="text-sm text-pretty text-muted-foreground">
@@ -83,7 +85,7 @@ export function Taquilla() {
           id="dia-visita"
           value={dia}
           onChange={(e) => setDia(e.target.value)}
-          className="mt-2 h-11 w-full border bg-background px-3 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="mt-2 h-11 w-full rounded-[var(--radius)] border-2 border-foreground bg-background px-3 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           {dias.map((d) => (
             <option key={d.valor} value={d.valor}>
@@ -104,7 +106,7 @@ export function Taquilla() {
                   {t.precio === 0 ? "Gratis" : `${t.precio} €`}
                 </p>
               </div>
-              <div className="flex items-center border">
+              <div className="flex items-center overflow-hidden rounded-full border-2 border-foreground">
                 <Button
                   type="button"
                   variant="ghost"
@@ -166,4 +168,15 @@ export function Taquilla() {
       </div>
     </form>
   )
+}
+
+// El check de la compra se dibuja solo al aparecer
+function CheckQueSeDibuja() {
+  const ref = useRef<IconoHandle>(null)
+
+  useEffect(() => {
+    ref.current?.startAnimation()
+  }, [])
+
+  return <CheckIcon ref={ref} size={20} aria-hidden="true" />
 }

@@ -11,9 +11,7 @@ export function Coleccion() {
     >
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
-            Sala 01 · La colección
-          </p>
+          <p className="etiqueta">Sala 01 · La colección</p>
           <h2
             id="coleccion-title"
             className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"

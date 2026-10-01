@@ -2,7 +2,11 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowRightIcon, MinusIcon, PlusIcon } from "lucide-react"
+
+import { useIconoAnimado } from "@/components/animado"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
+import { ChevronUpIcon } from "@/components/icons/chevron-up"
+import { PlusIcon } from "@/components/icons/plus"
 
 import { Pegatina } from "@/components/garabatos"
 import { Button } from "@/components/ui/button"
@@ -21,6 +25,7 @@ const VISIBLES = 11
 
 export function ColeccionGrid() {
   const [abierta, setAbierta] = useState(false)
+  const [icono, disparadores] = useIconoAnimado()
   const piezas = abierta ? coleccion : coleccion.slice(0, VISIBLES)
   const ocultas = coleccion.length - VISIBLES
 
@@ -36,7 +41,7 @@ export function ColeccionGrid() {
     <>
       <ul
         id="coleccion-piezas"
-        className="mt-14 grid gap-px border bg-border md:grid-cols-2 lg:grid-cols-3"
+        className="mt-14 grid gap-px overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-border md:grid-cols-2 lg:grid-cols-3"
       >
         {piezas.map((pieza, i) => (
           <li
@@ -66,17 +71,18 @@ export function ColeccionGrid() {
           onClick={alternar}
           aria-expanded={abierta}
           aria-controls="coleccion-piezas"
+          {...disparadores}
           className="h-12 px-6 text-base"
         >
           {abierta ? (
             <>
               Ver menos
-              <MinusIcon data-icon="inline-end" />
+              <ChevronUpIcon ref={icono} size={16} data-icon="inline-end" />
             </>
           ) : (
             <>
               Ver las {coleccion.length} piezas
-              <PlusIcon data-icon="inline-end" />
+              <PlusIcon ref={icono} size={16} data-icon="inline-end" />
             </>
           )}
         </Button>
@@ -91,9 +97,12 @@ export function ColeccionGrid() {
 }
 
 function TarjetaEntrada({ horizontal }: { horizontal: boolean }) {
+  const [icono, disparadores] = useIconoAnimado()
+
   return (
     <a
       href="#entradas"
+      {...disparadores}
       className={cn(
         "group flex h-full min-h-72 flex-col justify-between gap-6 bg-primary p-6 text-primary-foreground",
         horizontal &&
@@ -111,7 +120,7 @@ function TarjetaEntrada({ horizontal }: { horizontal: boolean }) {
         </p>
         <span className="mt-6 inline-flex items-center gap-2 font-medium">
           Comprar entrada anticipada
-          <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
+          <ArrowRightIcon ref={icono} size={16} />
         </span>
       </div>
     </a>

@@ -1,9 +1,10 @@
-import { ArrowDownIcon, ArrowRightIcon } from "lucide-react"
-
 import { Nota } from "@/components/garabatos"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { buttonVariants } from "@/components/ui/button"
 import { enLetras, expo } from "@/lib/expo"
+import { EnlaceAnimado } from "@/components/animado"
+import { ArrowDownIcon } from "@/components/icons/arrow-down"
+import { ArrowRightIcon } from "@/components/icons/arrow-right"
 import { cn } from "@/lib/utils"
 
 const facts = [
@@ -21,7 +22,7 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
         <div className="flex flex-col justify-center lg:col-span-7">
-          <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
+          <p className="etiqueta">
             Exposición temporal · {expo.venue} {expo.city}
           </p>
 
@@ -41,26 +42,26 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a
+            <EnlaceAnimado
               href="#entradas"
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "h-12 px-6 text-base"
               )}
+              icono={ArrowRightIcon}
             >
               Comprar entrada anticipada · {expo.tickets.early} €
-              <ArrowRightIcon data-icon="inline-end" />
-            </a>
-            <a
+            </EnlaceAnimado>
+            <EnlaceAnimado
               href="#coleccion"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-12 px-6 text-base"
               )}
+              icono={ArrowDownIcon}
             >
               Ver la colección
-              <ArrowDownIcon data-icon="inline-end" />
-            </a>
+            </EnlaceAnimado>
           </div>
 
           <Nota className="mt-4 mb-2 ml-6 -rotate-3">
@@ -78,7 +79,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="border-y bg-muted/50">
+      <div className="border-y-2 border-foreground bg-muted/50">
         <dl className="mx-auto grid max-w-7xl grid-cols-2 px-4 sm:px-6 lg:grid-cols-4">
           {facts.map((fact, i) => (
             <div
