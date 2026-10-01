@@ -1,5 +1,6 @@
 import { CheckIcon } from "lucide-react"
 
+import { Revelar } from "@/components/revelar"
 import { Pegatina } from "@/components/garabatos"
 import { Taquilla } from "@/components/taquilla"
 import { expo } from "@/lib/expo"
@@ -46,13 +47,15 @@ export function Entradas() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="etiqueta">Entradas · {expo.dates.label}</p>
-            <h2
-              id="entradas-title"
-              className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl lg:text-7xl"
-            >
-              La única pieza útil de la exposición es <em>tu entrada</em>.
-            </h2>
+            <Revelar>
+              <p className="etiqueta">Entradas · {expo.dates.label}</p>
+              <h2
+                id="entradas-title"
+                className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl lg:text-7xl"
+              >
+                La única pieza útil de la exposición es <em>tu entrada</em>.
+              </h2>
+            </Revelar>
           </div>
           <p className="self-end text-lg text-pretty opacity-90 lg:col-span-5">
             Cómprala por adelantado: es más barata, te guarda sitio en las
@@ -73,12 +76,8 @@ export function Entradas() {
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-[var(--radius)] border-2 border-foreground bg-card text-card-foreground shadow-[8px_8px_0_0_var(--foreground)] lg:sticky lg:top-32">
               <div className="flex items-center justify-between bg-foreground px-6 py-3 text-background sm:px-8">
-                <p className="font-label text-xs uppercase">
-                  Taquilla online
-                </p>
-                <p className="font-label text-xs uppercase">
-                  {expo.venue}
-                </p>
+                <p className="font-label text-xs uppercase">Taquilla online</p>
+                <p className="font-label text-xs uppercase">{expo.venue}</p>
               </div>
               <Taquilla />
             </div>

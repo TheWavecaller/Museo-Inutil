@@ -1,3 +1,4 @@
+import { Revelar } from "@/components/revelar"
 import { buttonVariants } from "@/components/ui/button"
 import {
   Accordion,
@@ -62,13 +63,15 @@ export function Faq() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-28">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
-            <p className="etiqueta">Preguntas frecuentes</p>
-            <h2
-              id="faq-title"
-              className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
-            >
-              Dudas <em className="text-primary">razonables</em>.
-            </h2>
+            <Revelar>
+              <p className="etiqueta">Preguntas frecuentes</p>
+              <h2
+                id="faq-title"
+                className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+              >
+                Dudas <em className="text-primary">razonables</em>.
+              </h2>
+            </Revelar>
             <p className="mt-6 text-pretty text-muted-foreground">
               Sobre una exposición que no lo es. Si la tuya no está aquí,
               pregunta en el mostrador de información de {expo.venue}.

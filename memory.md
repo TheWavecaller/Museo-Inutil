@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (fuera la monoespaciada: etiquetas en Bricolage estrecha)
+Última actualización: 2026-10-01 (animaciones de animate-ui)
 
 ---
 
@@ -53,6 +53,16 @@ La versión informal está fusionada en `main`. La de catálogo solo queda en la
   - **Siguen siendo estáticos:** tren, bus y coche (no tienen versión animada), los checks de las tarifas, los +/− de la taquilla y los chevrons del FAQ.
   - ⚠️ Un icono normal de lucide **no se puede pasar como prop** de un componente de servidor a uno de cliente: da "Functions cannot be passed directly to Client Components". Los de `components/icons` sí, porque son módulos `"use client"`.
   - `MotionConfig reducedMotion="user"` en `theme-provider.tsx`: las animaciones respetan "reducir movimiento".
+
+### Animaciones de la página (animate-ui, desde 2026-10-01)
+Pocas y con motivo, para no saturar. Usan componentes de [animate-ui](https://animate-ui.com), instalados con `npx shadcn add @animate-ui/<nombre>` en `components/animate-ui/` (más `hooks/use-is-in-view.tsx`). Funcionan sobre `motion`, igual que los iconos.
+- **Titulares** (`components/revelar.tsx`): `<Revelar>` envuelve la etiqueta y el titular de cada sección. Suben 24 px con un fundido, una sola vez, al entrar en pantalla (`Effect` con fade y slide). **Solo se usa en titulares**, nunca en tarjetas o párrafos.
+- **El rotulador se dibuja:** `<Revelar>` marca `data-visto="true"` al empezar y el CSS anima el `background-size` de los `<em>` de 0 % a 100 %.
+- **Pegatinas** (`<Pegatina>`, `components/garabatos.tsx`): "se pegan" con un rebote (zoom + fade, muelle) al entrar en pantalla.
+- **Números que se deslizan** (`components/cifra.tsx`, `SlidingNumber`): total, ahorro y cantidades de la taquilla, y contador del carrusel. El lector de pantalla lee el número normal (`sr-only`) y los rodillos van con `aria-hidden`. El cero a la izquierda ("02") se pone a mano, porque el `padStart` de la librería no rellena en el primer render.
+- **Lint:** `components/animate-ui/**` está excluido en `eslint.config.mjs`, porque es código de terceros que incumple reglas del React Compiler.
+- **Reducir movimiento:** `MotionConfig reducedMotion="user"` desactiva los desplazamientos y el trazo aparece sin transición.
+- ⚠️ **Capturas:** dentro de un iframe las animaciones de entrada se quedan a medias. Para comprobarlas, capturar la página a nivel superior con una ventana muy alta.
 
 ### Datos de la exposición (inventados y verosímiles)
 Están centralizados en `lib/expo.ts`. Si se cambian ahí, cambian en toda la web.

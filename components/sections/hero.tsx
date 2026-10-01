@@ -1,3 +1,4 @@
+import { Revelar } from "@/components/revelar"
 import { Nota } from "@/components/garabatos"
 import { HeroCarousel } from "@/components/hero-carousel"
 import { buttonVariants } from "@/components/ui/button"
@@ -22,17 +23,19 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
         <div className="flex flex-col justify-center lg:col-span-7">
-          <p className="etiqueta">
-            Exposición temporal · {expo.venue} {expo.city}
-          </p>
+          <Revelar>
+            <p className="etiqueta">
+              Exposición temporal · {expo.venue} {expo.city}
+            </p>
 
-          <h1
-            id="hero-title"
-            className="mt-6 font-heading text-6xl leading-[0.95] tracking-tight text-balance sm:text-7xl xl:text-8xl"
-          >
-            Una colección que no sirve{" "}
-            <em className="text-primary">para&nbsp;nada.</em>
-          </h1>
+            <h1
+              id="hero-title"
+              className="mt-6 font-heading text-6xl leading-[0.95] tracking-tight text-balance sm:text-7xl xl:text-8xl"
+            >
+              Una colección que no sirve{" "}
+              <em className="text-primary">para&nbsp;nada.</em>
+            </h1>
+          </Revelar>
 
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground">
             Objetos cotidianos rediseñados con un único propósito: que no

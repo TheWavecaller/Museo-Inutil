@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Revelar } from "@/components/revelar"
 import { Nota } from "@/components/garabatos"
 import { expo } from "@/lib/expo"
 
@@ -35,15 +36,19 @@ export function Manifiesto() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="flex flex-col justify-center lg:col-span-7">
-            <p className="etiqueta">Texto de sala · Por qué esta exposición</p>
+            <Revelar>
+              <p className="etiqueta">
+                Texto de sala · Por qué esta exposición
+              </p>
 
-            <h2
-              id="manifiesto-title"
-              className="mt-8 font-heading text-4xl leading-[1.1] tracking-tight text-balance sm:text-5xl xl:text-6xl"
-            >
-              Solo te das cuenta de lo bien diseñada que está una taza cuando
-              alguien <em className="text-primary">le cambia el asa</em>.
-            </h2>
+              <h2
+                id="manifiesto-title"
+                className="mt-8 font-heading text-4xl leading-[1.1] tracking-tight text-balance sm:text-5xl xl:text-6xl"
+              >
+                Solo te das cuenta de lo bien diseñada que está una taza cuando
+                alguien <em className="text-primary">le cambia el asa</em>.
+              </h2>
+            </Revelar>
 
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
               Esta no es una exposición sobre objetos que no funcionan. Es una

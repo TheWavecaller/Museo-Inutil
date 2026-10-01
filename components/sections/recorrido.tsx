@@ -1,3 +1,4 @@
+import { Revelar } from "@/components/revelar"
 import { buttonVariants } from "@/components/ui/button"
 import { autora, coleccion } from "@/lib/coleccion"
 import { expo } from "@/lib/expo"
@@ -49,14 +50,16 @@ export function Recorrido() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="etiqueta">El recorrido · 45 minutos</p>
-            <h2
-              id="recorrido-title"
-              className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
-            >
-              Cuarenta y cinco minutos sin hacer{" "}
-              <em className="text-primary">nada útil</em>.
-            </h2>
+            <Revelar>
+              <p className="etiqueta">El recorrido · 45 minutos</p>
+              <h2
+                id="recorrido-title"
+                className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+              >
+                Cuarenta y cinco minutos sin hacer{" "}
+                <em className="text-primary">nada útil</em>.
+              </h2>
+            </Revelar>
           </div>
           <p className="self-end text-pretty text-muted-foreground lg:col-span-5">
             Tres salas y una consigna. Primero miras, luego tocas y al final

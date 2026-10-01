@@ -5,6 +5,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
+import { Revelar } from "@/components/revelar"
 import { buttonVariants } from "@/components/ui/button"
 import { expo } from "@/lib/expo"
 import {
@@ -47,16 +48,18 @@ export function Visita() {
     >
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="etiqueta">
-            Visita · {expo.venue} {expo.city}
-          </p>
-          <h2
-            id="visita-title"
-            className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
-          >
-            Fácil de encontrar.{" "}
-            <em className="text-primary">Difícil de explicar.</em>
-          </h2>
+          <Revelar>
+            <p className="etiqueta">
+              Visita · {expo.venue} {expo.city}
+            </p>
+            <h2
+              id="visita-title"
+              className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+            >
+              Fácil de encontrar.{" "}
+              <em className="text-primary">Difícil de explicar.</em>
+            </h2>
+          </Revelar>
         </div>
         <p className="self-end text-pretty text-muted-foreground lg:col-span-5">
           La exposición ocupa una sala temporal de {expo.venue}, el Museo de la

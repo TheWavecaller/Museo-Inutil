@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { Revelar } from "@/components/revelar"
 import { Pegatina } from "@/components/garabatos"
 import { buttonVariants } from "@/components/ui/button"
 import { coleccion, numeroPieza } from "@/lib/coleccion"
@@ -17,15 +18,19 @@ export function CtaFinal() {
       className="dark overflow-hidden bg-background text-foreground"
     >
       <div className="mx-auto max-w-7xl px-4 pt-20 pb-14 text-center sm:px-6 lg:pt-32 lg:pb-20">
-        <p className="mx-auto etiqueta">Últimas semanas desde el primer día</p>
-        <Pegatina className="mt-6 rotate-3 text-2xl">¡Corre! (o no)</Pegatina>
-        <h2
-          id="cta-title"
-          className="mx-auto mt-6 max-w-5xl font-heading text-5xl leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl"
-        >
-          Cuatro semanas. {enLetras(expo.objectCount, { mayuscula: true })}{" "}
-          objetos. <em className="text-primary">Cero utilidad.</em>
-        </h2>
+        <Revelar>
+          <p className="mx-auto etiqueta">
+            Últimas semanas desde el primer día
+          </p>
+          <Pegatina className="mt-6 rotate-3 text-2xl">¡Corre! (o no)</Pegatina>
+          <h2
+            id="cta-title"
+            className="mx-auto mt-6 max-w-5xl font-heading text-5xl leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl"
+          >
+            Cuatro semanas. {enLetras(expo.objectCount, { mayuscula: true })}{" "}
+            objetos. <em className="text-primary">Cero utilidad.</em>
+          </h2>
+        </Revelar>
         <p className="mx-auto mt-8 max-w-xl text-lg text-pretty text-muted-foreground">
           Del {expo.dates.label} en {expo.venue} {expo.city}. Cuando cierre,
           estas piezas volverán a su sitio, que tampoco es muy útil.

@@ -1,3 +1,4 @@
+import { Revelar } from "@/components/revelar"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { EnlaceAnimado } from "@/components/animado"
@@ -132,14 +133,16 @@ export function Programa() {
     >
       <div className="grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <p className="etiqueta">Programa · 4 semanas</p>
-          <h2
-            id="programa-title"
-            className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
-          >
-            Cuatro semanas, <em className="text-primary">ninguna igual</em> de
-            inútil.
-          </h2>
+          <Revelar>
+            <p className="etiqueta">Programa · 4 semanas</p>
+            <h2
+              id="programa-title"
+              className="mt-4 font-heading text-5xl leading-none tracking-tight text-balance sm:text-6xl"
+            >
+              Cuatro semanas, <em className="text-primary">ninguna igual</em> de
+              inútil.
+            </h2>
+          </Revelar>
         </div>
         <p className="self-end text-pretty text-muted-foreground lg:col-span-5">
           Charlas, talleres, una visita nocturna y una clausura con premios.

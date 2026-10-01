@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { MinusIcon, PlusIcon } from "lucide-react"
 
 import type { IconoHandle } from "@/components/animado"
+import { Cifra } from "@/components/cifra"
 import { CheckIcon } from "@/components/icons/check"
 import { Button } from "@/components/ui/button"
 import { diasDeApertura, expo } from "@/lib/expo"
@@ -122,7 +123,7 @@ export function Taquilla() {
                   aria-label={`Entradas ${t.nombre}`}
                   className="w-8 text-center font-label tabular-nums"
                 >
-                  {cantidades[t.id]}
+                  <Cifra valor={cantidades[t.id]} />
                 </output>
                 <Button
                   type="button"
@@ -146,11 +147,15 @@ export function Taquilla() {
             Total
           </span>
           <span className="font-heading text-5xl leading-none tabular-nums">
-            {total} €
+            <Cifra valor={total} /> €
           </span>
         </div>
         <p className="mt-2 h-5 text-right text-sm text-primary">
-          {ahorro > 0 && `Te ahorras ${ahorro} € respecto a taquilla`}
+          {ahorro > 0 && (
+            <>
+              Te ahorras <Cifra valor={ahorro} /> € respecto a taquilla
+            </>
+          )}
         </p>
         <Button
           type="submit"

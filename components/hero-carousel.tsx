@@ -5,6 +5,7 @@ import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
 
 import { useIconoAnimado, type IconoAnimado } from "@/components/animado"
+import { Cifra } from "@/components/cifra"
 import { Pegatina } from "@/components/garabatos"
 import { ChevronLeftIcon } from "@/components/icons/chevron-left"
 import { ChevronRightIcon } from "@/components/icons/chevron-right"
@@ -140,7 +141,7 @@ export function HeroCarousel() {
               aria-label="Pieza anterior"
             />
             <span className="px-1 font-label text-xs text-muted-foreground tabular-nums">
-              {String(actual + 1).padStart(2, "0")} /{" "}
+              <Cifra valor={actual + 1} ceros /> /{" "}
               {String(coleccion.length).padStart(2, "0")}
             </span>
             <BotonIcono

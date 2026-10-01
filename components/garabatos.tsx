@@ -1,6 +1,10 @@
+"use client"
+
+import { Effect } from "@/components/animate-ui/primitives/effects/effect"
 import { cn } from "@/lib/utils"
 
-// Pegatina amarilla, ligeramente torcida, como pegada a mano
+// Pegatina amarilla, ligeramente torcida, como pegada a mano. Al entrar en
+// pantalla "se pega" con un pequeño rebote.
 export function Pegatina({
   children,
   className,
@@ -9,14 +13,23 @@ export function Pegatina({
   className?: string
 }) {
   return (
-    <span
-      className={cn(
-        "inline-block -rotate-6 rounded-full border-2 border-foreground bg-pop px-3 py-1 font-hand text-xl leading-none font-bold whitespace-nowrap text-pop-foreground shadow-[2px_2px_0_0_var(--foreground)]",
-        className
-      )}
+    <Effect
+      asChild
+      inView
+      zoom={{ initialScale: 0.4 }}
+      fade
+      delay={250}
+      transition={{ type: "spring", stiffness: 380, damping: 13 }}
     >
-      {children}
-    </span>
+      <span
+        className={cn(
+          "inline-block -rotate-6 rounded-full border-2 border-foreground bg-pop px-3 py-1 font-hand text-xl leading-none font-bold whitespace-nowrap text-pop-foreground shadow-[2px_2px_0_0_var(--foreground)]",
+          className
+        )}
+      >
+        {children}
+      </span>
+    </Effect>
   )
 }
 
