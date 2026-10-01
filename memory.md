@@ -25,7 +25,7 @@ Proyecto de clase **"My First Professional Landing Page"**: trabajamos como un p
 - **Nombre:** Museo de Objetos Inútiles (el del brief).
 - **Claim:** *"Una colección que no sirve para nada."*
 - **Dirección artística:** **museo serio, contenido absurdo**. Estética de catálogo de museo: serif elegante, fichas técnicas, números de inventario, mucho aire. El humor sale del contraste entre la seriedad del formato y lo ridículo de los objetos.
-- **Logo:** el símbolo del conjunto vacío (∅) dentro de una vitrina cuadrada, es decir, "utilidad = nada". Está en `components/logo.tsx`.
+- **Logo** (`components/logo.tsx`): **pegatina amarilla** torcida, con borde y sombra dura, y dentro un ∅ trazado a mano con la diagonal acuamarina ("utilidad = nada"). El nombre va en dos líneas, "MUSEO DE" en mono y "Objetos Inútiles" en Bricolage extragruesa, con **la "t" volcada en acuamarino** (ni el logo funciona del todo). Al pasar el ratón la pegatina se endereza y la "t" se levanta. El icono de pestaña es `app/icon.svg`, con la misma pegatina y los colores en hex; se borró el `favicon.ico` de la plantilla. La versión `v1-catalogo` tenía el ∅ en una vitrina de línea fina.
 - **Tipografías:**
   - Instrument Serif para titulares (`font-heading`).
   - Inter para el texto.
