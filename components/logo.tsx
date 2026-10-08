@@ -1,11 +1,17 @@
 import { cn } from "@/lib/utils"
 
-// Pegatina amarilla con el conjunto vacío (∅) trazado a mano: la utilidad
-// de cada pieza de la colección. Se endereza al pasar el ratón por el logo.
+// Acuamarinos fijos: dentro de la pegatina el fondo siempre es amarillo, así
+// que no siguen a --primary (que se aclara en las secciones oscuras).
+const AGUA = "oklch(0.52 0.095 195)"
+const AGUA_CLARO = "oklch(0.85 0.06 185)"
+const REGADERA = "M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44"
+
+// Pegatina amarilla con la Regadera (pieza Nº 002), que se riega a sí misma.
+// El borde y la sombra siguen a currentColor; se endereza al pasar el ratón.
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 44 44"
+      viewBox="0 0 200 200"
       aria-hidden="true"
       className={cn(
         "size-10 shrink-0 -rotate-6 transition-transform duration-300 group-hover/logo:rotate-6",
@@ -13,32 +19,66 @@ export function LogoMark({ className }: { className?: string }) {
       )}
     >
       {/* Sombra dura */}
-      <rect x="5" y="5" width="37" height="37" rx="10" fill="currentColor" />
       <rect
-        x="2"
-        y="2"
-        width="37"
-        height="37"
-        rx="10"
+        x="22"
+        y="22"
+        width="166"
+        height="166"
+        rx="40"
+        fill="currentColor"
+      />
+      <rect
+        x="10"
+        y="10"
+        width="166"
+        height="166"
+        rx="40"
         fill="var(--pop)"
         stroke="currentColor"
-        strokeWidth="2.5"
+        strokeWidth="11"
       />
-      {/* Círculo hecho a mano: no cierra del todo */}
-      <path
-        d="M27.5 12.5 C 23 9.5, 13.5 10.5, 12 18.5 C 10.5 26.5, 17 30.5, 22 29.5 C 28 28.5, 30.5 22, 28.6 16.4"
+      <g
+        transform="translate(93 95) scale(.76) translate(-106 -104)"
         fill="none"
         stroke="var(--pop-foreground)"
-        strokeWidth="3"
+        strokeWidth="9"
         strokeLinecap="round"
-      />
-      <path
-        d="M11 31 L 30.5 9.5"
-        fill="none"
-        stroke="var(--primary)"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-      />
+        strokeLinejoin="round"
+      >
+        {/* Pitorro: un tubo que da la vuelta hasta su propia boca */}
+        <path d={REGADERA} strokeWidth="21" />
+        <path d={REGADERA} stroke={AGUA_CLARO} strokeWidth="8" />
+        {/* Relleno descolocado, como en una risografía */}
+        <path
+          d="M56 94 C 54 126, 56 152, 60 172 L 144 174 C 149 150, 150 124, 148 94 Z"
+          fill={AGUA_CLARO}
+          stroke="none"
+          transform="translate(8 6)"
+        />
+        <path d="M54 94 C 52 126, 54 152, 58 172 L 142 174 C 147 150, 149 124, 148 94" />
+        <path
+          d="M52 95 C 76 85, 124 85, 150 94 C 124 103, 76 103, 52 95 Z"
+          fill={AGUA}
+        />
+        <path d="M56 110 C 26 108, 26 156, 58 154" />
+        {/* Alcachofa y gotas que caen dentro */}
+        <ellipse
+          cx="104"
+          cy="52"
+          rx="19"
+          ry="10"
+          transform="rotate(-32 104 52)"
+          fill="#fff"
+        />
+        <g fill={AGUA_CLARO} strokeWidth="3">
+          <path d="M90 66 q-6 10 0 13 q6 -3 0 -13z" />
+          <path d="M103 72 q-6 10 0 13 q6 -3 0 -13z" />
+          <path d="M116 68 q-6 10 0 13 q6 -3 0 -13z" />
+        </g>
+        {/* Cara: ojos cerrados de felicidad */}
+        <path d="M80 128 q6 -7 12 0 M108 128 q6 -7 12 0" />
+        <path d="M90 146 q10 10 20 0" />
+      </g>
     </svg>
   )
 }

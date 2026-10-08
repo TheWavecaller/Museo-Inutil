@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --tinta: #1d1915; --papel: #f9f6f0; --aqua: #0f7a7c; --aqua-claro: #9fd8d2; --pop: #eed21b; --papel-logo: #fffdf8; }
+  .oscuro { --papel-logo: #1d1915; }
+  body { margin: 0; padding: 40px; background: var(--papel); font-family: "Bricolage Grotesque", sans-serif; color: var(--tinta); }
+  h1 { font-weight: 800; letter-spacing: -0.03em; margin: 0 0 6px; font-size: 34px; }
+  p.sub { margin: 0 0 30px; color: #6b655c; max-width: 70ch; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .card { background: #fffdf8; border: 2px solid var(--tinta); border-radius: 14px; box-shadow: 5px 5px 0 var(--tinta); padding: 18px 18px 22px; }
+  .tag { display: inline-block; border: 2px solid var(--tinta); border-radius: 999px; padding: 3px 10px; font-weight: 800; font-size: 13px; }
+  h2 { margin: 12px 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .desc { margin: 0; font-size: 14px; color: #4e4840; line-height: 1.45; }
+  .grande { display: grid; place-items: center; height: 230px; }
+  .grande svg { width: 200px; height: 200px; }
+  .tamanos { display: flex; align-items: end; gap: 18px; padding: 14px 0; border-top: 2px dashed #d8d1c4; margin-top: 6px; }
+  .tamanos figure { margin: 0; text-align: center; font-size: 11px; color: #6b655c; }
+  .tamanos svg { color: var(--tinta); display: block; margin: 0 auto 4px; }
+  .franja { display: flex; flex-direction: column; gap: 0; border-radius: 10px; overflow: hidden; border: 2px solid var(--tinta); }
+  .franja > div { flex: 1; padding: 14px 16px; }
+  .claro { background: var(--papel); color: var(--tinta); }
+  .oscuro { background: #1d1915; color: #f9f6f0; }
+  /* Lockup con el texto del logo actual */
+  .lockup { display: inline-flex; align-items: center; gap: 10px; }
+  .lockup svg { width: 44px; height: 44px; flex-shrink: 0; }
+  .lockup .museo { display: block; font-stretch: 85%; font-weight: 600; font-size: 11px; letter-spacing: .02em; text-transform: uppercase; opacity: .65; line-height: 1; }
+  .lockup .nombre { display: block; font-weight: 800; letter-spacing: -0.035em; font-size: 20px; line-height: 1; margin-top: 3px; white-space: nowrap; }
+  .lockup .t { display: inline-block; color: var(--aqua); transform: rotate(22deg); transform-origin: bottom left; margin: 0 .1em 0 -.1em; }
+  .oscuro .lockup .t { color: #5cc3bd; }
+</style>
+</head>
+<body>
+
+<!--
+  Las tres marcas comparten trazo (ver <symbol>). Respecto al boceto C:
+  · Cuerpo más ancho y bajo, para que se lea regadera y no taza.
+  · El pitorro es un tubo hueco y la alcachofa apunta a su propia boca;
+    las gotas caen (lágrimas), no suben (eso parecía vapor).
+  · Trazo más grueso y sin patas: silueta compacta, casi cuadrada.
+  · La alcachofa en amarillo pop: el único color "de marca" que faltaba.
+  · El relleno descolocado se mantiene: es lo que la hace reconocible.
+  El trazo usa currentColor, así que sobre fondo oscuro pasa a blanco solo.
+-->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- C1 · Garabato limpio -->
+    <symbol id="c1" viewBox="20 20 172 172">
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke-width="19"/>
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke="var(--aqua-claro)" stroke-width="6"/>
+        <path d="M56 94 C 54 126, 56 152, 60 172 L 144 174 C 149 150, 150 124, 148 94 Z" fill="var(--aqua-claro)" stroke="none" transform="translate(8 6)"/>
+        <path d="M54 94 C 52 126, 54 152, 58 172 L 142 174 C 147 150, 149 124, 148 94"/>
+        <path d="M52 95 C 76 85, 124 85, 150 94 C 124 103, 76 103, 52 95 Z" fill="var(--aqua)"/>
+        <path d="M56 110 C 26 108, 26 156, 58 154"/>
+        <ellipse cx="104" cy="52" rx="19" ry="10" transform="rotate(-32 104 52)" fill="var(--pop)"/>
+        <g fill="var(--aqua-claro)" stroke-width="3"><path d="M90 66 q-6 10 0 13 q6 -3 0 -13z"/><path d="M103 72 q-6 10 0 13 q6 -3 0 -13z"/><path d="M116 68 q-6 10 0 13 q6 -3 0 -13z"/></g>
+        <path d="M80 128 q6 -7 12 0 M108 128 q6 -7 12 0"/><path d="M90 146 q10 10 20 0"/>
+      </g>
+    </symbol>
+    <!-- C2 · En pegatina (hereda la pegatina del logo actual) -->
+    <symbol id="c2" viewBox="0 0 200 200">
+      <g transform="rotate(-6 100 100)">
+        <rect x="22" y="22" width="166" height="166" rx="40" fill="currentColor"/>
+        <rect x="10" y="10" width="166" height="166" rx="40" fill="var(--pop)" stroke="currentColor" stroke-width="9"/>
+        <g transform="translate(93 95) scale(.76) translate(-106 -104)" style="color:#1d1915">
+      <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke-width="21"/>
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke="var(--aqua-claro)" stroke-width="8"/>
+        <path d="M56 94 C 54 126, 56 152, 60 172 L 144 174 C 149 150, 150 124, 148 94 Z" fill="var(--aqua-claro)" stroke="none" transform="translate(8 6)"/>
+        <path d="M54 94 C 52 126, 54 152, 58 172 L 142 174 C 147 150, 149 124, 148 94"/>
+        <path d="M52 95 C 76 85, 124 85, 150 94 C 124 103, 76 103, 52 95 Z" fill="var(--aqua)"/>
+        <path d="M56 110 C 26 108, 26 156, 58 154"/>
+        <ellipse cx="104" cy="52" rx="19" ry="10" transform="rotate(-32 104 52)" fill="#fff"/>
+        <g fill="var(--aqua-claro)" stroke-width="3"><path d="M90 66 q-6 10 0 13 q6 -3 0 -13z"/><path d="M103 72 q-6 10 0 13 q6 -3 0 -13z"/><path d="M116 68 q-6 10 0 13 q6 -3 0 -13z"/></g>
+        <path d="M80 128 q6 -7 12 0 M108 128 q6 -7 12 0"/><path d="M90 146 q10 10 20 0"/>
+      </g></g>
+      </g>
+    </symbol>
+    <!-- C3 · Sello: trazo grueso para tamaños mínimos -->
+    <symbol id="c3" viewBox="20 20 172 172">
+      <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke-width="24"/>
+        <path d="M144 152 C 188 138, 190 52, 152 36 C 134 29, 120 34, 113 44" stroke="var(--aqua-claro)" stroke-width="11"/>
+        <path d="M56 94 C 54 126, 56 152, 60 172 L 144 174 C 149 150, 150 124, 148 94 Z" fill="var(--aqua-claro)" stroke="none" transform="translate(8 6)"/>
+        <path d="M54 94 C 52 126, 54 152, 58 172 L 142 174 C 147 150, 149 124, 148 94"/>
+        <path d="M52 95 C 76 85, 124 85, 150 94 C 124 103, 76 103, 52 95 Z" fill="var(--aqua)"/>
+        <path d="M56 110 C 26 108, 26 156, 58 154"/>
+        <ellipse cx="104" cy="52" rx="19" ry="10" transform="rotate(-32 104 52)" fill="var(--pop)"/>
+        <g fill="var(--aqua-claro)" stroke-width="3"><path d="M103 70 q-6 10 0 13 q6 -3 0 -13z"/></g>
+        <circle cx="86" cy="128" r="5" fill="currentColor"/><circle cx="114" cy="128" r="5" fill="currentColor"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<h1>Logo: la Regadera (estilo C)</h1>
+<p class="sub">Tres versiones del garabato pensadas como marca: menos líneas, trazo más grueso y sin patas, para que aguanten pequeñas. Abajo de cada una: tamaños reales (header 40 px, pestaña 16 px) y cómo queda junto al texto, en claro y en oscuro.</p>
+
+<div class="grid">
+
+  <div class="card">
+    <span class="tag">C1 · Garabato limpio</span>
+    <div class="grande"><svg><use href="#c1"/></svg></div>
+    <div class="tamanos">
+      <figure><svg width="64" height="64"><use href="#c1"/></svg>64</figure>
+      <figure><svg width="40" height="40"><use href="#c1"/></svg>40</figure>
+      <figure><svg width="24" height="24"><use href="#c1"/></svg>24</figure>
+      <figure><svg width="16" height="16"><use href="#c1"/></svg>16</figure>
+    </div>
+    <div class="franja">
+      <div class="claro"><span class="lockup"><svg><use href="#c1"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+      <div class="oscuro"><span class="lockup"><svg><use href="#c1"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+    </div>
+    <h2>Fiel al boceto</h2>
+    <p class="desc">El garabato tal cual, ordenado. Pitorro como tubo que vuelve sobre sí misma, alcachofa amarilla con gotas cayendo dentro, relleno descolocado. La más ligera y simpática; a 16 px ya se empasta.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">C2 · En pegatina</span>
+    <div class="grande"><svg><use href="#c2"/></svg></div>
+    <div class="tamanos">
+      <figure><svg width="64" height="64"><use href="#c2"/></svg>64</figure>
+      <figure><svg width="40" height="40"><use href="#c2"/></svg>40</figure>
+      <figure><svg width="24" height="24"><use href="#c2"/></svg>24</figure>
+      <figure><svg width="16" height="16"><use href="#c2"/></svg>16</figure>
+    </div>
+    <div class="franja">
+      <div class="claro"><span class="lockup"><svg><use href="#c2"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+      <div class="oscuro"><span class="lockup"><svg><use href="#c2"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+    </div>
+    <h2>Continuidad</h2>
+    <p class="desc">La regadera dentro de la pegatina amarilla torcida del logo actual. Cambia el dibujo pero no la marca: mismo bloque de color, misma sombra dura. La que más destaca en el header.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag">C3 · Sello</span>
+    <div class="grande"><svg><use href="#c3"/></svg></div>
+    <div class="tamanos">
+      <figure><svg width="64" height="64"><use href="#c3"/></svg>64</figure>
+      <figure><svg width="40" height="40"><use href="#c3"/></svg>40</figure>
+      <figure><svg width="24" height="24"><use href="#c3"/></svg>24</figure>
+      <figure><svg width="16" height="16"><use href="#c3"/></svg>16</figure>
+    </div>
+    <div class="franja">
+      <div class="claro"><span class="lockup"><svg><use href="#c3"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+      <div class="oscuro"><span class="lockup"><svg><use href="#c3"/></svg><span><span class="museo">Museo de</span><span class="nombre">Objetos Inú<span class="t">t</span>iles</span></span></span></div>
+    </div>
+    <h2>Silueta gruesa</h2>
+    <p class="desc">Trazo grueso, una sola gota y ojos de punto, sin boca. Pierde detalle pero aguanta en la pestaña del navegador. Buena como icono complementario de C1.</p>
+  </div>
+
+</div>
+</body>
+</html>
