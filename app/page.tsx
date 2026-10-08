@@ -7,6 +7,7 @@ import { Manifiesto } from "@/components/sections/manifiesto"
 import { Programa } from "@/components/sections/programa"
 import { Recorrido } from "@/components/sections/recorrido"
 import { Visita } from "@/components/sections/visita"
+import { Salpicadura } from "@/components/salpicadura"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 
@@ -26,6 +27,7 @@ export default function Page() {
         <CtaFinal />
       </main>
       <SiteFooter />
+      <Salpicadura />
     </>
   )
 }

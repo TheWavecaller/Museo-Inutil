@@ -238,3 +238,53 @@
     transition: none;
   }
 }
+
+/*
+ * Pegatinas que se despegan (componente <Pegatina>, técnica de StickerPeel
+ * de React Bits). La parte de arriba de la cara se recorta y el dorso, una
+ * copia volteada, ocupa su reflejo bajo la línea de pliegue. Con el pliegue
+ * en la fracción p de la altura, el dorso va en top = (2p - 1) · 100% y se
+ * recorta a su franja superior, de altura p.
+ */
+.pegatina-cara {
+  clip-path: inset(-8px -8px -8px -8px);
+  transition: clip-path 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pegatina-dorso {
+  top: -100%;
+  clip-path: inset(0 0 100% 0);
+  transform: scaleY(-1);
+  /* Papel del reverso, con un brillo hacia el pliegue */
+  background: linear-gradient(
+    to top,
+    oklch(0.99 0.004 85),
+    oklch(0.86 0.012 85)
+  );
+  transition:
+    top 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    clip-path 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pegatina:hover .pegatina-cara {
+  clip-path: inset(24% -8px -8px -8px);
+}
+.pegatina:hover .pegatina-dorso {
+  top: -52%;
+  clip-path: inset(0 0 76% 0);
+}
+
+.pegatina:active .pegatina-cara {
+  clip-path: inset(40% -8px -8px -8px);
+}
+.pegatina:active .pegatina-dorso {
+  top: -20%;
+  clip-path: inset(0 0 60% 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pegatina-cara,
+  .pegatina-dorso {
+    transition: none;
+  }
+}

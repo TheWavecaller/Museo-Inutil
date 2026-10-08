@@ -4,7 +4,9 @@ import { Effect } from "@/components/animate-ui/primitives/effects/effect"
 import { cn } from "@/lib/utils"
 
 // Pegatina amarilla, ligeramente torcida, como pegada a mano. Al entrar en
-// pantalla "se pega" con un pequeño rebote.
+// pantalla "se pega" con un pequeño rebote, y al pasar el ratón se despega
+// una esquina y asoma el dorso (técnica de StickerPeel, de React Bits; el
+// CSS está en globals.css, clases .pegatina-*).
 export function Pegatina({
   children,
   className,
@@ -23,11 +25,17 @@ export function Pegatina({
     >
       <span
         className={cn(
-          "inline-block -rotate-6 rounded-full border-2 border-foreground bg-pop px-3 py-1 font-hand text-xl leading-none font-bold whitespace-nowrap text-pop-foreground shadow-[2px_2px_0_0_var(--foreground)]",
+          "pegatina relative inline-block -rotate-6 font-hand text-xl leading-none font-bold",
           className
         )}
       >
-        {children}
+        <span className="pegatina-cara block rounded-full border-2 border-foreground bg-pop px-3 py-1 whitespace-nowrap text-pop-foreground shadow-[2px_2px_0_0_var(--foreground)]">
+          {children}
+        </span>
+        <span
+          aria-hidden="true"
+          className="pegatina-dorso absolute inset-x-0 h-full rounded-full border-2 border-foreground"
+        />
       </span>
     </Effect>
   )

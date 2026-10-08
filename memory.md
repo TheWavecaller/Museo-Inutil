@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-01 (idea de mascota: bocetos de la Regadera)
+Última actualización: 2026-10-08 (interacciones de React Bits: gotas, pegatinas y titular que se cae)
 
 - **Repositorio:** https://github.com/TheWavecaller/Museo-Inutil (rama `main`)
 - **Commits** firmados como TheWavecaller, con la identidad configurada solo en este repositorio.
@@ -29,7 +29,7 @@ Proyecto de clase **"My First Professional Landing Page"**: trabajamos como un p
 - **Claim:** *"Una colección que no sirve para nada."*
 - **Concepto:** museo serio, contenido absurdo. La estructura es de museo (fichas, números de pieza, salas, texto de sala), pero el tono visual es **informal, gracioso y moderno**.
 - **Tono:** irónico, con frases cortas. Ejemplo: *"En taquilla costará 12 €. Lo cual tampoco tendría ningún sentido."*
-- **Logo** (`components/logo.tsx`): **pegatina amarilla** torcida, con borde y sombra dura, y dentro un ∅ trazado a mano con la diagonal acuamarina ("utilidad = nada"). Debajo de "MUSEO DE", en `font-label`, va "Objetos Inútiles" en Bricolage extragruesa con **la "t" volcada en acuamarino** (ni el logo funciona del todo). Al pasar el ratón se endereza todo. El icono de pestaña es `app/icon.svg`, la misma pegatina con los colores en hex.
+- **Logo** (`components/logo.tsx`): **pegatina amarilla** torcida, con borde y sombra dura (en `currentColor`), y dentro **la Regadera** (pieza Nº 002) en garabato, regándose a sí misma (versión **C2** de `docs/bocetos/logo-regadera.html`). Los acuamarinos de dentro son fijos (`AGUA` y `AGUA_CLARO`) porque el fondo siempre es amarillo. Hasta el 2026-10-08 era un ∅ trazado a mano. Debajo de "MUSEO DE", en `font-label`, va "Objetos Inútiles" en Bricolage extragruesa con **la "t" volcada en acuamarino** (ni el logo funciona del todo). Al pasar el ratón se endereza todo. El icono de pestaña es `app/icon.svg`: la misma pegatina con colores en hex y **trazo más grueso, sin boca y con una sola gota** (como la C3) para que se lea a 16 px.
 
 ### Historia del estilo (git)
 - **Etiqueta `v1-catalogo`:** primera versión, estética de catálogo con Instrument Serif, Inter y Geist Mono, cursivas acuamarinas y esquinas rectas. **Descartada** por el cliente porque parecía "página IA genérica". Se conserva solo como referencia.
@@ -70,6 +70,14 @@ Todo funciona sobre `motion`. `MotionConfig reducedMotion="user"` (en `theme-pro
   - **Pegatinas:** "se pegan" con un rebote al entrar en pantalla.
   - **`<Cifra>`** (`components/cifra.tsx`, `SlidingNumber`): total, ahorro y cantidades de la taquilla, y contador del carrusel. Es accesible (número en `sr-only`, rodillos con `aria-hidden`). El "0" de "02" se pone a mano.
 - **Cinta del CTA final:** animación CSS `marquee` en `globals.css`; se para si el sistema pide reducir movimiento.
+- **[React Bits](https://reactbits.dev)** (MIT + Commons Clause), **adaptados** en lugar de instalados tal cual:
+  - **`<Salpicadura>`** (`components/salpicadura.tsx`, basado en ClickSpark), montado en `app/page.tsx`: cada clic suelta 7 gotas en forma de lágrima, con borde de tinta, que caen con gravedad. Usa un lienzo fijo del tamaño de la pantalla que solo se anima mientras hay gotas. Los colores salen de `--primary` y `--foreground` del elemento pulsado, así que en las secciones oscuras se aclaran.
+  - **Pegatinas que se despegan** (técnica de StickerPeel, solo con CSS y sin `gsap`): `<Pegatina>` tiene cara y dorso, con las clases `.pegatina-*` en `globals.css`. Al pasar el ratón se pliega un 24 % y al pulsar un 40 %. La del hero ("¡No funciona!") además **se puede arrastrar** por encima del carrusel (`motion` con `drag` en `hero-carousel.tsx`).
+  - **`<TitularQueSeCae>`** (`components/titular-que-se-cae.tsx`, basado en FallingText) en el CTA final: al mover el ratón por encima (o al tocarlo en el móvil) las palabras saltan y caen con física (`matter-js`, que se carga solo al caer). Con ratón se pueden arrastrar, y el botón "Se ha roto. ¿Lo recoloco?" las devuelve a su sitio.
+    - Se usa `pointermove` y no `pointerenter`, para que no se caiga solo porque el titular pasa bajo el cursor al hacer scroll.
+    - Se quitan los oyentes de rueda y táctil de matter-js, porque bloqueaban el scroll.
+  - Los tres se quedan quietos con "reducir movimiento".
+  - Propuestos para más adelante: Variable Proximity en el titular del hero (aprovecha los ejes de Bricolage), Tilted Card en las fichas y Magnet en "Comprar entradas". **Descartados:** fondos WebGL (Aurora, Silk…), porque tienen el aspecto de "página IA genérica".
 
 ---
 
@@ -167,6 +175,16 @@ El cliente quiere una "mascotilla" que siga al usuario mientras hace scroll y ha
   - Parpadea, gotea y reacciona al scroll: se inclina al bajar rápido y se duerme si te paras.
   - Al pulsarla salpica y suelta un chiste.
 - **Precauciones:** pequeña, con botón para esconderla, más discreta en móvil, quieta con "reducir movimiento" y `aria-hidden`.
+
+### Regadera C como logo (2026-10-08)
+- El usuario plantea usar la **Regadera C (garabato)** como logo de la web, en lugar del ∅ en pegatina.
+- **Bocetos** en `docs/bocetos/logo-regadera.html` (y `.png`), con tres versiones a 200, 64, 40, 24 y 16 px y junto al texto, en claro y en oscuro:
+  - **C1 · Garabato limpio:** fiel al boceto.
+  - **C2 · En pegatina:** dentro de la pegatina amarilla del logo actual, para mantener la continuidad.
+  - **C3 · Sello:** trazo grueso, sin boca, para la pestaña.
+- **Cambios respecto al boceto C:** cuerpo más ancho y bajo (antes parecía una taza), pitorro como tubo hueco, alcachofa amarilla apuntando a su boca, gotas en forma de lágrima que caen (las rayitas parecían vapor) y sin patas.
+- **Recomendación:** dejar el logo en **SVG inline** y no en webp, porque sigue `currentColor` en las secciones oscuras, se puede animar al pasar el ratón y pesa menos. Si se necesita un raster (Open Graph o redes), exportar aparte.
+- ✅ **Elegida la C2 e implantada** (header, footer e `icon.svg`). Se queda en SVG, sin webp.
 
 ---
 

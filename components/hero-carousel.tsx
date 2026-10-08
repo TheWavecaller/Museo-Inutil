@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
+import { motion } from "motion/react"
 
 import { useIconoAnimado, type IconoAnimado } from "@/components/animado"
 import { Cifra } from "@/components/cifra"
@@ -35,6 +36,7 @@ export function HeroCarousel() {
   const [api, setApi] = useState<CarouselApi>()
   const [actual, setActual] = useState(0)
   const [enMarcha, setEnMarcha] = useState(true)
+  const figuraRef = useRef<HTMLElement>(null)
   const [autoplay] = useState(() =>
     Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })
   )
@@ -67,10 +69,18 @@ export function HeroCarousel() {
   const pieza = coleccion[actual]
 
   return (
-    <figure className="relative mx-auto w-full max-w-md">
-      <Pegatina className="absolute -top-4 -right-3 z-20 rotate-6 text-2xl sm:-right-6">
-        ¡No funciona!
-      </Pegatina>
+    <figure ref={figuraRef} className="relative mx-auto w-full max-w-md">
+      {/* Se puede despegar y mover por encima del carrusel (no sirve de nada) */}
+      <motion.div
+        drag
+        dragConstraints={figuraRef}
+        dragElastic={0.15}
+        dragMomentum={false}
+        whileDrag={{ scale: 1.1, rotate: -4 }}
+        className="absolute -top-4 -right-3 z-20 cursor-grab touch-none active:cursor-grabbing sm:-right-6"
+      >
+        <Pegatina className="rotate-6 text-2xl">¡No funciona!</Pegatina>
+      </motion.div>
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}

@@ -8,6 +8,7 @@ import { enLetras, expo } from "@/lib/expo"
 import { cn } from "@/lib/utils"
 import { EnlaceAnimado } from "@/components/animado"
 import { ArrowRightIcon } from "@/components/icons/arrow-right"
+import { TitularQueSeCae } from "@/components/titular-que-se-cae"
 
 // Cierre de la página: misma sala a oscuras que el Manifiesto, para que
 // ambos funcionen como apertura y cierre.
@@ -23,13 +24,17 @@ export function CtaFinal() {
             Últimas semanas desde el primer día
           </p>
           <Pegatina className="mt-6 rotate-3 text-2xl">¡Corre! (o no)</Pegatina>
-          <h2
+          {/* Al pasar el ratón se viene abajo: ni el titular funciona */}
+          <TitularQueSeCae
             id="cta-title"
+            trozos={[
+              ...`Cuatro semanas. ${enLetras(expo.objectCount, { mayuscula: true })} objetos.`
+                .split(" ")
+                .map((texto) => ({ texto })),
+              { texto: "Cero utilidad.", destacado: true },
+            ]}
             className="mx-auto mt-6 max-w-5xl font-heading text-5xl leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl"
-          >
-            Cuatro semanas. {enLetras(expo.objectCount, { mayuscula: true })}{" "}
-            objetos. <em className="text-primary">Cero utilidad.</em>
-          </h2>
+          />
         </Revelar>
         <p className="mx-auto mt-8 max-w-xl text-lg text-pretty text-muted-foreground">
           Del {expo.dates.label} en {expo.venue} {expo.city}. Cuando cierre,
