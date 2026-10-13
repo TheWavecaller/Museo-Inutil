@@ -5,6 +5,7 @@ Documento vivo: se actualiza cada vez que se termina una sección o se toma una 
 
 - **Repositorio:** https://github.com/TheWavecaller/Museo-Inutil (rama `main`)
 - **Commits** firmados como TheWavecaller, con la identidad configurada solo en este repositorio.
+- **Subir a GitHub** desde el ordenador de clase (`D:\Museo-Inutil-main`): no hay `gh`; se usa Git Credential Manager (`credential.helper manager` en la configuración local), que abre el inicio de sesión de GitHub en el navegador.
 
 ---
 
