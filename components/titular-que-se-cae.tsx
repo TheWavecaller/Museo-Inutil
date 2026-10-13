@@ -86,12 +86,21 @@ export function TitularQueSeCae({
         return [{ el, cuerpo }]
       })
 
+      const pintar = () => {
+        for (const { el, cuerpo } of piezas) {
+          const { x, y } = cuerpo.position
+          el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${cuerpo.angle}rad)`
+        }
+      }
+
       for (const { el } of piezas) {
         el.style.position = "absolute"
         el.style.left = "0"
         el.style.top = "0"
         el.style.willChange = "transform"
       }
+      // En su sitio desde ya, antes del primer fotograma de la física
+      pintar()
 
       World.add(motor.world, [...limites, ...piezas.map((p) => p.cuerpo)])
 
@@ -115,17 +124,30 @@ export function TitularQueSeCae({
         )
       }
 
-      const animar = () => {
-        Engine.update(motor, 1000 / 60)
-        for (const { el, cuerpo } of piezas) {
-          const { x, y } = cuerpo.position
-          el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${cuerpo.angle}rad)`
-        }
+      // Paso según el tiempo real, para que caiga igual de rápido en
+      // pantallas de 60 y de 120 Hz. Con tope de 1/60 s, que es lo máximo
+      // que matter-js admite sin perder estabilidad
+      let anterior = 0
+      const animar = (ahora: number) => {
+        const paso = anterior
+          ? Math.min(ahora - anterior, 1000 / 60)
+          : 1000 / 60
+        anterior = ahora
+        Engine.update(motor, paso)
+        pintar()
         fotograma = requestAnimationFrame(animar)
       }
-      animar()
+
+      // La física solo corre mientras el titular está en pantalla
+      const vigia = new IntersectionObserver(([entrada]) => {
+        cancelAnimationFrame(fotograma)
+        anterior = 0
+        fotograma = entrada.isIntersecting ? requestAnimationFrame(animar) : 0
+      })
+      vigia.observe(titular)
 
       limpiar = () => {
+        vigia.disconnect()
         if (raton) {
           const r = raton as Matter.Mouse & Record<string, EventListener>
           titular.removeEventListener("mousemove", r.mousemove)
@@ -137,8 +159,13 @@ export function TitularQueSeCae({
       }
     })
 
-    // Si cambia el ancho, las paredes ya no cuadran: mejor recolocar
-    const alRedimensionar = () => recolocar()
+    // Si cambia el ancho, las paredes ya no cuadran: mejor recolocar. Solo
+    // el ancho: en el móvil la altura cambia al esconderse la barra del
+    // navegador durante el scroll
+    const anchoInicial = window.innerWidth
+    const alRedimensionar = () => {
+      if (window.innerWidth !== anchoInicial) recolocar()
+    }
     window.addEventListener("resize", alRedimensionar)
 
     return () => {

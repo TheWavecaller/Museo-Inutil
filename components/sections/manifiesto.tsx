@@ -67,7 +67,7 @@ export function Manifiesto() {
                 src="/multimedia/cosmocaixa.webp"
                 alt={`Vista aérea del edificio de ${expo.venue} y su plaza, en ${expo.city}`}
                 fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
+                sizes="(min-width: 1280px) 30rem, (min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
             </div>

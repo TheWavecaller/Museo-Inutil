@@ -40,8 +40,8 @@ export function Hero() {
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground">
             Objetos cotidianos rediseñados con un único propósito: que no
             funcionen. Regaderas que se riegan a sí mismas, tenedores
-            encadenados y copas imposibles de brindar. Solo durante cuatro
-            semanas. Como casi todo lo que exponemos, no volverá.
+            encadenados y copas con las que no hay forma de brindar. Solo
+            durante cuatro semanas. Como casi todo lo que exponemos, no volverá.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">

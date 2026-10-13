@@ -32,6 +32,7 @@ export function Salpicadura() {
     const reducir = window.matchMedia("(prefers-reduced-motion: reduce)")
     let gotas: Gota[] = []
     let fotograma = 0
+    let anterior = 0
 
     function ajustar() {
       if (!lienzo || !ctx) return
@@ -64,14 +65,19 @@ export function Salpicadura() {
     function animar(ahora: number) {
       if (!ctx) return
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+      // Fotogramas de 60 Hz transcurridos: las gotas caen igual de rápido
+      // en pantallas de 60 y de 120 Hz
+      const f = anterior ? Math.min((ahora - anterior) / (1000 / 60), 3) : 1
+      anterior = ahora
       gotas = gotas.filter((g) => ahora - g.nacida < VIDA)
       for (const g of gotas) {
-        g.vy += GRAVEDAD
-        g.x += g.vx
-        g.y += g.vy
+        g.vy += GRAVEDAD * f
+        g.x += g.vx * f
+        g.y += g.vy * f
         pintar(g, ahora)
       }
-      fotograma = gotas.length ? requestAnimationFrame(animar) : 0
+      if (gotas.length) fotograma = requestAnimationFrame(animar)
+      else fotograma = anterior = 0
     }
 
     function salpicar(e: PointerEvent) {

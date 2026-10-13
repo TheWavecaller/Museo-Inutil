@@ -1,7 +1,7 @@
 # Memoria del proyecto · Museo de Objetos Inútiles
 
 Documento vivo: se actualiza cada vez que se termina una sección o se toma una decisión.
-Última actualización: 2026-10-08 (interacciones de React Bits: gotas, pegatinas y titular que se cae)
+Última actualización: 2026-10-13 (revisión general de rendimiento y textos)
 
 - **Repositorio:** https://github.com/TheWavecaller/Museo-Inutil (rama `main`)
 - **Commits** firmados como TheWavecaller, con la identidad configurada solo en este repositorio.
@@ -140,11 +140,15 @@ Están centralizados en **`lib/expo.ts`**: si se cambian ahí, cambian en toda l
   - Next 16, React 19, TypeScript y Tailwind 4.
   - shadcn con el estilo `base-nova`, sobre **Base UI**: no hay `asChild`, así que para que un enlace parezca botón se usa `buttonVariants()` sobre un `<a>`.
 - **shadcn:** `button`, `sheet`, `carousel` (Embla con `embla-carousel-autoplay`) y `accordion`. En `components/ui/carousel.tsx` hay un `eslint-disable` con comentario.
-- **Google Maps:** `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sCosmoCaixa+Barcelona!6i16`, sin clave de API. La variante `maps?q=…&output=embed` está bloqueada para incrustarse.
-- **Imágenes de carruseles:** la cinta del CTA usa `loading="eager"`; el carrusel del hero precarga solo la pieza actual y las dos vecinas.
+- **Google Maps:** sin clave de API, en el **formato oficial de "Compartir → Insertar un mapa"** (`maps/embed?pb=!1m18…`, con las coordenadas y el id de la ficha de CosmoCaixa, en castellano). La variante de búsqueda `embed?origin=mfe&pb=…` dejó de cargar en el navegador del usuario el 2026-10-13 (icono de página rota), y la de `maps?q=…&output=embed` está bloqueada para incrustarse.
+- **Calidad de imagen:** las fotos de la colección son pequeñas (casi todas 700×700) y ya venían comprimidas; a calidad 75, Next llenaba de cuadritos los degradados de los renders. `next.config.ts` permite `qualities: [75, 90]` y sirve AVIF/WebP; las piezas del hero y de la colección usan `quality={90}`. La escoba destacada se sigue viendo algo blanda porque se pinta a ~820 px a partir de 700 px: solo se arregla con un original más grande.
+- **Imágenes de carruseles:** la cinta del CTA usa `loading="eager"` con `fetchPriority="low"`, para no competir con el principio de la página; el carrusel del hero precarga solo la pieza actual y las dos vecinas.
+- **Imágenes en general:** en Next 16 `priority` está obsoleto; se usa `preload` (primera pieza del hero). Los `sizes` tienen en cuenta el `max-w-7xl` del contenedor, para no pedir imágenes más grandes de lo que se pintan en pantallas anchas.
+- **Física a ritmo real:** las gotas y el titular que se cae calculan el paso con el tiempo transcurrido, para ir igual en pantallas de 60 y de 120 Hz (matter-js, con tope de 1/60 s). El titular caído solo simula mientras está en pantalla (IntersectionObserver) y solo se recoloca si cambia el **ancho** de la ventana, no el alto (la barra del navegador móvil).
 - **Metadatos:** título, descripción, Open Graph y Twitter en `app/layout.tsx`. Falta una imagen de Open Graph.
 - **Comandos:**
   - `npm run dev`: http://localhost:3000.
+    - ⚠️ En Windows, Turbopack (el de por defecto) puede dar error 500 con las fuentes de Google ("next/font/google queries have exactly one entry"). Solución: arrancar con webpack, `npx next dev --webpack`.
   - `npm run typecheck`, `npm run lint` y `npm run build`: **ejecutarlos antes de dar algo por terminado**.
   - `npx prettier --write` sobre lo tocado, sin reformatear `components/ui`, `components/icons` ni `components/animate-ui`.
 - **Revisión visual** con capturas de Edge headless:
@@ -196,3 +200,4 @@ El cliente quiere una "mascotilla" que siga al usuario mientras hace scroll y ha
 - [ ] Imagen de Open Graph para compartir en redes.
 - [ ] **Mascota Regadera:** elegir estilo (A/B/C) y construirla (ver sección 6).
 - [ ] (Opcional) Pedir permiso a Katerina Kamprani para usar sus imágenes.
+- [ ] **Decidir:** la taquilla deja elegir días que ya han pasado (la exposición empezó el 5 oct). Se podrían desactivar, pero a partir del 2 nov la taquilla quedaría vacía en la demo de clase.

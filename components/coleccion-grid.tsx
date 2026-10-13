@@ -142,10 +142,11 @@ function Ficha({ pieza, destacada }: { pieza: Pieza; destacada: boolean }) {
           src={pieza.imagen}
           alt={`${pieza.nombre}: ${pieza.descripcion}`}
           fill
+          quality={90}
           sizes={
             destacada
-              ? "(min-width: 1024px) 66vw, (min-width: 768px) 100vw, 100vw"
-              : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              ? "(min-width: 1280px) 52rem, (min-width: 1024px) 66vw, 100vw"
+              : "(min-width: 1280px) 26rem, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           }
           className="object-cover transition-transform duration-500 hover:scale-[1.03]"
           style={{ objectPosition: pieza.encuadre }}

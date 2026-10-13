@@ -19,10 +19,12 @@ import { MapPinIcon } from "@/components/icons/map-pin"
 import { ArrowUpRightIcon } from "@/components/icons/arrow-up-right"
 import { cn } from "@/lib/utils"
 
-// Embed de Google Maps sin API key. La búsqueda por nombre coloca el pin
-// sobre la ficha del museo (la variante ?output=embed redirige y no carga).
-const lugar = `${expo.venue} ${expo.city}`.replaceAll(" ", "+")
-const mapaEmbed = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${lugar}!6i16`
+// Embed de Google Maps sin API key, en el formato oficial de "Compartir →
+// Insertar un mapa": coordenadas y ficha de CosmoCaixa, en castellano. (La
+// variante ?output=embed redirige y no carga, y la de búsqueda con
+// origin=mfe no es oficial y algunos navegadores la rechazan.)
+const mapaEmbed =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.2!2d2.131123!3d41.4131805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4981a24a1d9cd%3A0x20158071eb4f77f3!2sCosmoCaixa!5e0!3m2!1ses!2ses!4v1760000000000!5m2!1ses!2ses"
 const mapaEnlace = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${expo.venue}, ${expo.address}`)}`
 
 const transporte = [

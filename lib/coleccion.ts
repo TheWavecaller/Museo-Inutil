@@ -255,7 +255,7 @@ export const coleccion: Pieza[] = [
     nombreOriginal: "Triple Door",
     tipo: "Render 3D",
     descripcion:
-      "Una puerta partida en hojas, cada una con su manilla. Entrar exige paciencia.",
+      "Una puerta partida en tres hojas, cada una con su manilla. Entrar exige paciencia.",
     utilidad: 1.5,
     imagen: "/coleccion/puerta.jpg",
   },

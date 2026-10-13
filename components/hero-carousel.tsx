@@ -100,7 +100,8 @@ export function HeroCarousel() {
                   src={p.imagen}
                   alt={`${p.nombre}, de ${autora.nombre}: ${p.descripcion}`}
                   fill
-                  priority={i === 0}
+                  quality={90}
+                  preload={i === 0}
                   // Precarga la pieza actual y sus vecinas para que no
                   // aparezcan huecos en blanco al avanzar
                   loading={
@@ -110,7 +111,7 @@ export function HeroCarousel() {
                         ? "eager"
                         : "lazy"
                   }
-                  sizes="(min-width: 1024px) 28rem, 100vw"
+                  sizes="(min-width: 28rem) 28rem, 100vw"
                   className="object-cover"
                   style={{ objectPosition: p.encuadre }}
                 />

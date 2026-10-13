@@ -26,8 +26,8 @@ export const expo = {
   },
 } as const
 
-// En Instrument Serif el "1" se parece a la "l" ("11" se lee "ll"), así que
-// en titulares las cifras se escriben en letra.
+// En los titulares las cifras se escriben en letra ("Treinta y tres
+// objetos"): se leen mejor y suenan menos a ficha técnica.
 const UNIDADES = [
   "cero",
   "uno",

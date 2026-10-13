@@ -34,7 +34,8 @@ export function Taquilla() {
   // Lo que costarían en taquilla las entradas anticipadas
   const ahorro =
     (expo.tickets.general - expo.tickets.early) * cantidades.anticipada
-  const etiquetaDia = dias.find((d) => d.valor === dia)?.etiqueta
+  // En minúscula, porque va en mitad de una frase ("para el lun 5 oct")
+  const etiquetaDia = dias.find((d) => d.valor === dia)?.etiqueta.toLowerCase()
 
   function cambiar(id: Tipo, delta: number) {
     setCantidades((c) => ({
@@ -153,7 +154,7 @@ export function Taquilla() {
         <p className="mt-2 h-5 text-right text-sm text-primary">
           {ahorro > 0 && (
             <>
-              Te ahorras <Cifra valor={ahorro} /> € respecto a taquilla
+              Te ahorras <Cifra valor={ahorro} /> € respecto a la taquilla
             </>
           )}
         </p>

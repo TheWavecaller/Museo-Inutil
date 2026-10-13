@@ -76,6 +76,8 @@ export function CtaFinal() {
                   fill
                   sizes="13rem"
                   loading="eager"
+                  // Que no compitan con las imágenes del principio de la página
+                  fetchPriority="low"
                   className="object-cover opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0"
                   style={{ objectPosition: p.encuadre }}
                 />
